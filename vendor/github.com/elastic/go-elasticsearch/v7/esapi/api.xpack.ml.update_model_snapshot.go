@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -41,9 +28,11 @@ func newMLUpdateModelSnapshotFunc(t Transport) MLUpdateModelSnapshot {
 // MLUpdateModelSnapshot - Updates certain properties of a snapshot.
 //
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-snapshot.html.
+//
 type MLUpdateModelSnapshot func(snapshot_id string, job_id string, body io.Reader, o ...func(*MLUpdateModelSnapshotRequest)) (*Response, error)
 
 // MLUpdateModelSnapshotRequest configures the ML Update Model Snapshot API request.
+//
 type MLUpdateModelSnapshotRequest struct {
 	Body io.Reader
 
@@ -61,6 +50,7 @@ type MLUpdateModelSnapshotRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r MLUpdateModelSnapshotRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -115,6 +105,10 @@ func (r MLUpdateModelSnapshotRequest) Do(ctx context.Context, transport Transpor
 		req.URL.RawQuery = q.Encode()
 	}
 
+	if r.Body != nil {
+		req.Header[headerContentType] = headerContentTypeJSON
+	}
+
 	if len(r.Header) > 0 {
 		if len(req.Header) == 0 {
 			req.Header = r.Header
@@ -125,10 +119,6 @@ func (r MLUpdateModelSnapshotRequest) Do(ctx context.Context, transport Transpor
 				}
 			}
 		}
-	}
-
-	if r.Body != nil && req.Header.Get(headerContentType) == "" {
-		req.Header[headerContentType] = headerContentTypeJSON
 	}
 
 	if ctx != nil {
@@ -150,6 +140,7 @@ func (r MLUpdateModelSnapshotRequest) Do(ctx context.Context, transport Transpor
 }
 
 // WithContext sets the request context.
+//
 func (f MLUpdateModelSnapshot) WithContext(v context.Context) func(*MLUpdateModelSnapshotRequest) {
 	return func(r *MLUpdateModelSnapshotRequest) {
 		r.ctx = v
@@ -157,6 +148,7 @@ func (f MLUpdateModelSnapshot) WithContext(v context.Context) func(*MLUpdateMode
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f MLUpdateModelSnapshot) WithPretty() func(*MLUpdateModelSnapshotRequest) {
 	return func(r *MLUpdateModelSnapshotRequest) {
 		r.Pretty = true
@@ -164,6 +156,7 @@ func (f MLUpdateModelSnapshot) WithPretty() func(*MLUpdateModelSnapshotRequest) 
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f MLUpdateModelSnapshot) WithHuman() func(*MLUpdateModelSnapshotRequest) {
 	return func(r *MLUpdateModelSnapshotRequest) {
 		r.Human = true
@@ -171,6 +164,7 @@ func (f MLUpdateModelSnapshot) WithHuman() func(*MLUpdateModelSnapshotRequest) {
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f MLUpdateModelSnapshot) WithErrorTrace() func(*MLUpdateModelSnapshotRequest) {
 	return func(r *MLUpdateModelSnapshotRequest) {
 		r.ErrorTrace = true
@@ -178,6 +172,7 @@ func (f MLUpdateModelSnapshot) WithErrorTrace() func(*MLUpdateModelSnapshotReque
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f MLUpdateModelSnapshot) WithFilterPath(v ...string) func(*MLUpdateModelSnapshotRequest) {
 	return func(r *MLUpdateModelSnapshotRequest) {
 		r.FilterPath = v
@@ -185,6 +180,7 @@ func (f MLUpdateModelSnapshot) WithFilterPath(v ...string) func(*MLUpdateModelSn
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f MLUpdateModelSnapshot) WithHeader(h map[string]string) func(*MLUpdateModelSnapshotRequest) {
 	return func(r *MLUpdateModelSnapshotRequest) {
 		if r.Header == nil {
@@ -197,6 +193,7 @@ func (f MLUpdateModelSnapshot) WithHeader(h map[string]string) func(*MLUpdateMod
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f MLUpdateModelSnapshot) WithOpaqueID(s string) func(*MLUpdateModelSnapshotRequest) {
 	return func(r *MLUpdateModelSnapshotRequest) {
 		if r.Header == nil {

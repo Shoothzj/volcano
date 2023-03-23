@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -42,9 +29,11 @@ func newTransformStopTransformFunc(t Transport) TransformStopTransform {
 // TransformStopTransform - Stops one or more transforms.
 //
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-transform.html.
+//
 type TransformStopTransform func(transform_id string, o ...func(*TransformStopTransformRequest)) (*Response, error)
 
 // TransformStopTransformRequest configures the Transform Stop Transform API request.
+//
 type TransformStopTransformRequest struct {
 	TransformID string
 
@@ -65,6 +54,7 @@ type TransformStopTransformRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r TransformStopTransformRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -164,6 +154,7 @@ func (r TransformStopTransformRequest) Do(ctx context.Context, transport Transpo
 }
 
 // WithContext sets the request context.
+//
 func (f TransformStopTransform) WithContext(v context.Context) func(*TransformStopTransformRequest) {
 	return func(r *TransformStopTransformRequest) {
 		r.ctx = v
@@ -171,6 +162,7 @@ func (f TransformStopTransform) WithContext(v context.Context) func(*TransformSt
 }
 
 // WithAllowNoMatch - whether to ignore if a wildcard expression matches no transforms. (this includes `_all` string or when no transforms have been specified).
+//
 func (f TransformStopTransform) WithAllowNoMatch(v bool) func(*TransformStopTransformRequest) {
 	return func(r *TransformStopTransformRequest) {
 		r.AllowNoMatch = &v
@@ -178,6 +170,7 @@ func (f TransformStopTransform) WithAllowNoMatch(v bool) func(*TransformStopTran
 }
 
 // WithForce - whether to force stop a failed transform or not. default to false.
+//
 func (f TransformStopTransform) WithForce(v bool) func(*TransformStopTransformRequest) {
 	return func(r *TransformStopTransformRequest) {
 		r.Force = &v
@@ -185,6 +178,7 @@ func (f TransformStopTransform) WithForce(v bool) func(*TransformStopTransformRe
 }
 
 // WithTimeout - controls the time to wait until the transform has stopped. default to 30 seconds.
+//
 func (f TransformStopTransform) WithTimeout(v time.Duration) func(*TransformStopTransformRequest) {
 	return func(r *TransformStopTransformRequest) {
 		r.Timeout = v
@@ -192,6 +186,7 @@ func (f TransformStopTransform) WithTimeout(v time.Duration) func(*TransformStop
 }
 
 // WithWaitForCheckpoint - whether to wait for the transform to reach a checkpoint before stopping. default to false.
+//
 func (f TransformStopTransform) WithWaitForCheckpoint(v bool) func(*TransformStopTransformRequest) {
 	return func(r *TransformStopTransformRequest) {
 		r.WaitForCheckpoint = &v
@@ -199,6 +194,7 @@ func (f TransformStopTransform) WithWaitForCheckpoint(v bool) func(*TransformSto
 }
 
 // WithWaitForCompletion - whether to wait for the transform to fully stop before returning or not. default to false.
+//
 func (f TransformStopTransform) WithWaitForCompletion(v bool) func(*TransformStopTransformRequest) {
 	return func(r *TransformStopTransformRequest) {
 		r.WaitForCompletion = &v
@@ -206,6 +202,7 @@ func (f TransformStopTransform) WithWaitForCompletion(v bool) func(*TransformSto
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f TransformStopTransform) WithPretty() func(*TransformStopTransformRequest) {
 	return func(r *TransformStopTransformRequest) {
 		r.Pretty = true
@@ -213,6 +210,7 @@ func (f TransformStopTransform) WithPretty() func(*TransformStopTransformRequest
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f TransformStopTransform) WithHuman() func(*TransformStopTransformRequest) {
 	return func(r *TransformStopTransformRequest) {
 		r.Human = true
@@ -220,6 +218,7 @@ func (f TransformStopTransform) WithHuman() func(*TransformStopTransformRequest)
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f TransformStopTransform) WithErrorTrace() func(*TransformStopTransformRequest) {
 	return func(r *TransformStopTransformRequest) {
 		r.ErrorTrace = true
@@ -227,6 +226,7 @@ func (f TransformStopTransform) WithErrorTrace() func(*TransformStopTransformReq
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f TransformStopTransform) WithFilterPath(v ...string) func(*TransformStopTransformRequest) {
 	return func(r *TransformStopTransformRequest) {
 		r.FilterPath = v
@@ -234,6 +234,7 @@ func (f TransformStopTransform) WithFilterPath(v ...string) func(*TransformStopT
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f TransformStopTransform) WithHeader(h map[string]string) func(*TransformStopTransformRequest) {
 	return func(r *TransformStopTransformRequest) {
 		if r.Header == nil {
@@ -246,6 +247,7 @@ func (f TransformStopTransform) WithHeader(h map[string]string) func(*TransformS
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f TransformStopTransform) WithOpaqueID(s string) func(*TransformStopTransformRequest) {
 	return func(r *TransformStopTransformRequest) {
 		if r.Header == nil {

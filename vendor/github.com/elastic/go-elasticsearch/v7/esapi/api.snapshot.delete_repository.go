@@ -1,27 +1,13 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
 import (
 	"context"
-	"errors"
 	"net/http"
 	"strings"
 	"time"
@@ -42,9 +28,11 @@ func newSnapshotDeleteRepositoryFunc(t Transport) SnapshotDeleteRepository {
 // SnapshotDeleteRepository deletes a repository.
 //
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html.
+//
 type SnapshotDeleteRepository func(repository []string, o ...func(*SnapshotDeleteRepositoryRequest)) (*Response, error)
 
 // SnapshotDeleteRepositoryRequest configures the Snapshot Delete Repository API request.
+//
 type SnapshotDeleteRepositoryRequest struct {
 	Repository []string
 
@@ -62,6 +50,7 @@ type SnapshotDeleteRepositoryRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r SnapshotDeleteRepositoryRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -70,10 +59,6 @@ func (r SnapshotDeleteRepositoryRequest) Do(ctx context.Context, transport Trans
 	)
 
 	method = "DELETE"
-
-	if len(r.Repository) == 0 {
-		return nil, errors.New("repository is required and cannot be nil or empty")
-	}
 
 	path.Grow(1 + len("_snapshot") + 1 + len(strings.Join(r.Repository, ",")))
 	path.WriteString("/")
@@ -151,6 +136,7 @@ func (r SnapshotDeleteRepositoryRequest) Do(ctx context.Context, transport Trans
 }
 
 // WithContext sets the request context.
+//
 func (f SnapshotDeleteRepository) WithContext(v context.Context) func(*SnapshotDeleteRepositoryRequest) {
 	return func(r *SnapshotDeleteRepositoryRequest) {
 		r.ctx = v
@@ -158,6 +144,7 @@ func (f SnapshotDeleteRepository) WithContext(v context.Context) func(*SnapshotD
 }
 
 // WithMasterTimeout - explicit operation timeout for connection to master node.
+//
 func (f SnapshotDeleteRepository) WithMasterTimeout(v time.Duration) func(*SnapshotDeleteRepositoryRequest) {
 	return func(r *SnapshotDeleteRepositoryRequest) {
 		r.MasterTimeout = v
@@ -165,6 +152,7 @@ func (f SnapshotDeleteRepository) WithMasterTimeout(v time.Duration) func(*Snaps
 }
 
 // WithTimeout - explicit operation timeout.
+//
 func (f SnapshotDeleteRepository) WithTimeout(v time.Duration) func(*SnapshotDeleteRepositoryRequest) {
 	return func(r *SnapshotDeleteRepositoryRequest) {
 		r.Timeout = v
@@ -172,6 +160,7 @@ func (f SnapshotDeleteRepository) WithTimeout(v time.Duration) func(*SnapshotDel
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f SnapshotDeleteRepository) WithPretty() func(*SnapshotDeleteRepositoryRequest) {
 	return func(r *SnapshotDeleteRepositoryRequest) {
 		r.Pretty = true
@@ -179,6 +168,7 @@ func (f SnapshotDeleteRepository) WithPretty() func(*SnapshotDeleteRepositoryReq
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f SnapshotDeleteRepository) WithHuman() func(*SnapshotDeleteRepositoryRequest) {
 	return func(r *SnapshotDeleteRepositoryRequest) {
 		r.Human = true
@@ -186,6 +176,7 @@ func (f SnapshotDeleteRepository) WithHuman() func(*SnapshotDeleteRepositoryRequ
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f SnapshotDeleteRepository) WithErrorTrace() func(*SnapshotDeleteRepositoryRequest) {
 	return func(r *SnapshotDeleteRepositoryRequest) {
 		r.ErrorTrace = true
@@ -193,6 +184,7 @@ func (f SnapshotDeleteRepository) WithErrorTrace() func(*SnapshotDeleteRepositor
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f SnapshotDeleteRepository) WithFilterPath(v ...string) func(*SnapshotDeleteRepositoryRequest) {
 	return func(r *SnapshotDeleteRepositoryRequest) {
 		r.FilterPath = v
@@ -200,6 +192,7 @@ func (f SnapshotDeleteRepository) WithFilterPath(v ...string) func(*SnapshotDele
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f SnapshotDeleteRepository) WithHeader(h map[string]string) func(*SnapshotDeleteRepositoryRequest) {
 	return func(r *SnapshotDeleteRepositoryRequest) {
 		if r.Header == nil {
@@ -212,6 +205,7 @@ func (f SnapshotDeleteRepository) WithHeader(h map[string]string) func(*Snapshot
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f SnapshotDeleteRepository) WithOpaqueID(s string) func(*SnapshotDeleteRepositoryRequest) {
 	return func(r *SnapshotDeleteRepositoryRequest) {
 		if r.Header == nil {

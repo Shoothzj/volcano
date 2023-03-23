@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -40,9 +27,11 @@ func newSecurityEnableUserFunc(t Transport) SecurityEnableUser {
 // SecurityEnableUser - Enables users in the native realm.
 //
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-enable-user.html.
+//
 type SecurityEnableUser func(username string, o ...func(*SecurityEnableUserRequest)) (*Response, error)
 
 // SecurityEnableUserRequest configures the Security Enable User API request.
+//
 type SecurityEnableUserRequest struct {
 	Username string
 
@@ -59,6 +48,7 @@ type SecurityEnableUserRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r SecurityEnableUserRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -144,6 +134,7 @@ func (r SecurityEnableUserRequest) Do(ctx context.Context, transport Transport) 
 }
 
 // WithContext sets the request context.
+//
 func (f SecurityEnableUser) WithContext(v context.Context) func(*SecurityEnableUserRequest) {
 	return func(r *SecurityEnableUserRequest) {
 		r.ctx = v
@@ -151,6 +142,7 @@ func (f SecurityEnableUser) WithContext(v context.Context) func(*SecurityEnableU
 }
 
 // WithRefresh - if `true` (the default) then refresh the affected shards to make this operation visible to search, if `wait_for` then wait for a refresh to make this operation visible to search, if `false` then do nothing with refreshes..
+//
 func (f SecurityEnableUser) WithRefresh(v string) func(*SecurityEnableUserRequest) {
 	return func(r *SecurityEnableUserRequest) {
 		r.Refresh = v
@@ -158,6 +150,7 @@ func (f SecurityEnableUser) WithRefresh(v string) func(*SecurityEnableUserReques
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f SecurityEnableUser) WithPretty() func(*SecurityEnableUserRequest) {
 	return func(r *SecurityEnableUserRequest) {
 		r.Pretty = true
@@ -165,6 +158,7 @@ func (f SecurityEnableUser) WithPretty() func(*SecurityEnableUserRequest) {
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f SecurityEnableUser) WithHuman() func(*SecurityEnableUserRequest) {
 	return func(r *SecurityEnableUserRequest) {
 		r.Human = true
@@ -172,6 +166,7 @@ func (f SecurityEnableUser) WithHuman() func(*SecurityEnableUserRequest) {
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f SecurityEnableUser) WithErrorTrace() func(*SecurityEnableUserRequest) {
 	return func(r *SecurityEnableUserRequest) {
 		r.ErrorTrace = true
@@ -179,6 +174,7 @@ func (f SecurityEnableUser) WithErrorTrace() func(*SecurityEnableUserRequest) {
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f SecurityEnableUser) WithFilterPath(v ...string) func(*SecurityEnableUserRequest) {
 	return func(r *SecurityEnableUserRequest) {
 		r.FilterPath = v
@@ -186,6 +182,7 @@ func (f SecurityEnableUser) WithFilterPath(v ...string) func(*SecurityEnableUser
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f SecurityEnableUser) WithHeader(h map[string]string) func(*SecurityEnableUserRequest) {
 	return func(r *SecurityEnableUserRequest) {
 		if r.Header == nil {
@@ -198,6 +195,7 @@ func (f SecurityEnableUser) WithHeader(h map[string]string) func(*SecurityEnable
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f SecurityEnableUser) WithOpaqueID(s string) func(*SecurityEnableUserRequest) {
 	return func(r *SecurityEnableUserRequest) {
 		if r.Header == nil {

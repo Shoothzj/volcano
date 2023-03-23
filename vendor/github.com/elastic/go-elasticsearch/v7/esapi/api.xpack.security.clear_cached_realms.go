@@ -1,27 +1,13 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
 import (
 	"context"
-	"errors"
 	"net/http"
 	"strings"
 )
@@ -41,9 +27,11 @@ func newSecurityClearCachedRealmsFunc(t Transport) SecurityClearCachedRealms {
 // SecurityClearCachedRealms - Evicts users from the user cache. Can completely clear the cache or evict specific users.
 //
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-clear-cache.html.
+//
 type SecurityClearCachedRealms func(realms []string, o ...func(*SecurityClearCachedRealmsRequest)) (*Response, error)
 
 // SecurityClearCachedRealmsRequest configures the Security Clear Cached Realms API request.
+//
 type SecurityClearCachedRealmsRequest struct {
 	Realms []string
 
@@ -60,6 +48,7 @@ type SecurityClearCachedRealmsRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r SecurityClearCachedRealmsRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -68,10 +57,6 @@ func (r SecurityClearCachedRealmsRequest) Do(ctx context.Context, transport Tran
 	)
 
 	method = "POST"
-
-	if len(r.Realms) == 0 {
-		return nil, errors.New("realms is required and cannot be nil or empty")
-	}
 
 	path.Grow(1 + len("_security") + 1 + len("realm") + 1 + len(strings.Join(r.Realms, ",")) + 1 + len("_clear_cache"))
 	path.WriteString("/")
@@ -149,6 +134,7 @@ func (r SecurityClearCachedRealmsRequest) Do(ctx context.Context, transport Tran
 }
 
 // WithContext sets the request context.
+//
 func (f SecurityClearCachedRealms) WithContext(v context.Context) func(*SecurityClearCachedRealmsRequest) {
 	return func(r *SecurityClearCachedRealmsRequest) {
 		r.ctx = v
@@ -156,6 +142,7 @@ func (f SecurityClearCachedRealms) WithContext(v context.Context) func(*Security
 }
 
 // WithUsernames - comma-separated list of usernames to clear from the cache.
+//
 func (f SecurityClearCachedRealms) WithUsernames(v ...string) func(*SecurityClearCachedRealmsRequest) {
 	return func(r *SecurityClearCachedRealmsRequest) {
 		r.Usernames = v
@@ -163,6 +150,7 @@ func (f SecurityClearCachedRealms) WithUsernames(v ...string) func(*SecurityClea
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f SecurityClearCachedRealms) WithPretty() func(*SecurityClearCachedRealmsRequest) {
 	return func(r *SecurityClearCachedRealmsRequest) {
 		r.Pretty = true
@@ -170,6 +158,7 @@ func (f SecurityClearCachedRealms) WithPretty() func(*SecurityClearCachedRealmsR
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f SecurityClearCachedRealms) WithHuman() func(*SecurityClearCachedRealmsRequest) {
 	return func(r *SecurityClearCachedRealmsRequest) {
 		r.Human = true
@@ -177,6 +166,7 @@ func (f SecurityClearCachedRealms) WithHuman() func(*SecurityClearCachedRealmsRe
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f SecurityClearCachedRealms) WithErrorTrace() func(*SecurityClearCachedRealmsRequest) {
 	return func(r *SecurityClearCachedRealmsRequest) {
 		r.ErrorTrace = true
@@ -184,6 +174,7 @@ func (f SecurityClearCachedRealms) WithErrorTrace() func(*SecurityClearCachedRea
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f SecurityClearCachedRealms) WithFilterPath(v ...string) func(*SecurityClearCachedRealmsRequest) {
 	return func(r *SecurityClearCachedRealmsRequest) {
 		r.FilterPath = v
@@ -191,6 +182,7 @@ func (f SecurityClearCachedRealms) WithFilterPath(v ...string) func(*SecurityCle
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f SecurityClearCachedRealms) WithHeader(h map[string]string) func(*SecurityClearCachedRealmsRequest) {
 	return func(r *SecurityClearCachedRealmsRequest) {
 		if r.Header == nil {
@@ -203,6 +195,7 @@ func (f SecurityClearCachedRealms) WithHeader(h map[string]string) func(*Securit
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f SecurityClearCachedRealms) WithOpaqueID(s string) func(*SecurityClearCachedRealmsRequest) {
 	return func(r *SecurityClearCachedRealmsRequest) {
 		if r.Header == nil {

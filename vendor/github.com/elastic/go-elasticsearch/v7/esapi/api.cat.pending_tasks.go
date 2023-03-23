@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -42,9 +29,11 @@ func newCatPendingTasksFunc(t Transport) CatPendingTasks {
 // CatPendingTasks returns a concise representation of the cluster pending tasks.
 //
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-pending-tasks.html.
+//
 type CatPendingTasks func(o ...func(*CatPendingTasksRequest)) (*Response, error)
 
 // CatPendingTasksRequest configures the Cat Pending Tasks API request.
+//
 type CatPendingTasksRequest struct {
 	Format        string
 	H             []string
@@ -66,6 +55,7 @@ type CatPendingTasksRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r CatPendingTasksRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -172,6 +162,7 @@ func (r CatPendingTasksRequest) Do(ctx context.Context, transport Transport) (*R
 }
 
 // WithContext sets the request context.
+//
 func (f CatPendingTasks) WithContext(v context.Context) func(*CatPendingTasksRequest) {
 	return func(r *CatPendingTasksRequest) {
 		r.ctx = v
@@ -179,6 +170,7 @@ func (f CatPendingTasks) WithContext(v context.Context) func(*CatPendingTasksReq
 }
 
 // WithFormat - a short version of the accept header, e.g. json, yaml.
+//
 func (f CatPendingTasks) WithFormat(v string) func(*CatPendingTasksRequest) {
 	return func(r *CatPendingTasksRequest) {
 		r.Format = v
@@ -186,6 +178,7 @@ func (f CatPendingTasks) WithFormat(v string) func(*CatPendingTasksRequest) {
 }
 
 // WithH - comma-separated list of column names to display.
+//
 func (f CatPendingTasks) WithH(v ...string) func(*CatPendingTasksRequest) {
 	return func(r *CatPendingTasksRequest) {
 		r.H = v
@@ -193,6 +186,7 @@ func (f CatPendingTasks) WithH(v ...string) func(*CatPendingTasksRequest) {
 }
 
 // WithHelp - return help information.
+//
 func (f CatPendingTasks) WithHelp(v bool) func(*CatPendingTasksRequest) {
 	return func(r *CatPendingTasksRequest) {
 		r.Help = &v
@@ -200,6 +194,7 @@ func (f CatPendingTasks) WithHelp(v bool) func(*CatPendingTasksRequest) {
 }
 
 // WithLocal - return local information, do not retrieve the state from master node (default: false).
+//
 func (f CatPendingTasks) WithLocal(v bool) func(*CatPendingTasksRequest) {
 	return func(r *CatPendingTasksRequest) {
 		r.Local = &v
@@ -207,6 +202,7 @@ func (f CatPendingTasks) WithLocal(v bool) func(*CatPendingTasksRequest) {
 }
 
 // WithMasterTimeout - explicit operation timeout for connection to master node.
+//
 func (f CatPendingTasks) WithMasterTimeout(v time.Duration) func(*CatPendingTasksRequest) {
 	return func(r *CatPendingTasksRequest) {
 		r.MasterTimeout = v
@@ -214,6 +210,7 @@ func (f CatPendingTasks) WithMasterTimeout(v time.Duration) func(*CatPendingTask
 }
 
 // WithS - comma-separated list of column names or column aliases to sort by.
+//
 func (f CatPendingTasks) WithS(v ...string) func(*CatPendingTasksRequest) {
 	return func(r *CatPendingTasksRequest) {
 		r.S = v
@@ -221,6 +218,7 @@ func (f CatPendingTasks) WithS(v ...string) func(*CatPendingTasksRequest) {
 }
 
 // WithTime - the unit in which to display time values.
+//
 func (f CatPendingTasks) WithTime(v string) func(*CatPendingTasksRequest) {
 	return func(r *CatPendingTasksRequest) {
 		r.Time = v
@@ -228,6 +226,7 @@ func (f CatPendingTasks) WithTime(v string) func(*CatPendingTasksRequest) {
 }
 
 // WithV - verbose mode. display column headers.
+//
 func (f CatPendingTasks) WithV(v bool) func(*CatPendingTasksRequest) {
 	return func(r *CatPendingTasksRequest) {
 		r.V = &v
@@ -235,6 +234,7 @@ func (f CatPendingTasks) WithV(v bool) func(*CatPendingTasksRequest) {
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f CatPendingTasks) WithPretty() func(*CatPendingTasksRequest) {
 	return func(r *CatPendingTasksRequest) {
 		r.Pretty = true
@@ -242,6 +242,7 @@ func (f CatPendingTasks) WithPretty() func(*CatPendingTasksRequest) {
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f CatPendingTasks) WithHuman() func(*CatPendingTasksRequest) {
 	return func(r *CatPendingTasksRequest) {
 		r.Human = true
@@ -249,6 +250,7 @@ func (f CatPendingTasks) WithHuman() func(*CatPendingTasksRequest) {
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f CatPendingTasks) WithErrorTrace() func(*CatPendingTasksRequest) {
 	return func(r *CatPendingTasksRequest) {
 		r.ErrorTrace = true
@@ -256,6 +258,7 @@ func (f CatPendingTasks) WithErrorTrace() func(*CatPendingTasksRequest) {
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f CatPendingTasks) WithFilterPath(v ...string) func(*CatPendingTasksRequest) {
 	return func(r *CatPendingTasksRequest) {
 		r.FilterPath = v
@@ -263,6 +266,7 @@ func (f CatPendingTasks) WithFilterPath(v ...string) func(*CatPendingTasksReques
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f CatPendingTasks) WithHeader(h map[string]string) func(*CatPendingTasksRequest) {
 	return func(r *CatPendingTasksRequest) {
 		if r.Header == nil {
@@ -275,6 +279,7 @@ func (f CatPendingTasks) WithHeader(h map[string]string) func(*CatPendingTasksRe
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f CatPendingTasks) WithOpaqueID(s string) func(*CatPendingTasksRequest) {
 	return func(r *CatPendingTasksRequest) {
 		if r.Header == nil {

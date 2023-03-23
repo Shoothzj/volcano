@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -42,10 +29,14 @@ func newSearchableSnapshotsMountFunc(t Transport) SearchableSnapshotsMount {
 
 // SearchableSnapshotsMount - Mount a snapshot as a searchable index.
 //
+// This API is experimental.
+//
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-api-mount-snapshot.html.
+//
 type SearchableSnapshotsMount func(repository string, snapshot string, body io.Reader, o ...func(*SearchableSnapshotsMountRequest)) (*Response, error)
 
 // SearchableSnapshotsMountRequest configures the Searchable Snapshots Mount API request.
+//
 type SearchableSnapshotsMountRequest struct {
 	Body io.Reader
 
@@ -53,7 +44,6 @@ type SearchableSnapshotsMountRequest struct {
 	Snapshot   string
 
 	MasterTimeout     time.Duration
-	Storage           string
 	WaitForCompletion *bool
 
 	Pretty     bool
@@ -67,6 +57,7 @@ type SearchableSnapshotsMountRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r SearchableSnapshotsMountRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -90,10 +81,6 @@ func (r SearchableSnapshotsMountRequest) Do(ctx context.Context, transport Trans
 
 	if r.MasterTimeout != 0 {
 		params["master_timeout"] = formatDuration(r.MasterTimeout)
-	}
-
-	if r.Storage != "" {
-		params["storage"] = r.Storage
 	}
 
 	if r.WaitForCompletion != nil {
@@ -129,6 +116,10 @@ func (r SearchableSnapshotsMountRequest) Do(ctx context.Context, transport Trans
 		req.URL.RawQuery = q.Encode()
 	}
 
+	if r.Body != nil {
+		req.Header[headerContentType] = headerContentTypeJSON
+	}
+
 	if len(r.Header) > 0 {
 		if len(req.Header) == 0 {
 			req.Header = r.Header
@@ -139,10 +130,6 @@ func (r SearchableSnapshotsMountRequest) Do(ctx context.Context, transport Trans
 				}
 			}
 		}
-	}
-
-	if r.Body != nil && req.Header.Get(headerContentType) == "" {
-		req.Header[headerContentType] = headerContentTypeJSON
 	}
 
 	if ctx != nil {
@@ -164,6 +151,7 @@ func (r SearchableSnapshotsMountRequest) Do(ctx context.Context, transport Trans
 }
 
 // WithContext sets the request context.
+//
 func (f SearchableSnapshotsMount) WithContext(v context.Context) func(*SearchableSnapshotsMountRequest) {
 	return func(r *SearchableSnapshotsMountRequest) {
 		r.ctx = v
@@ -171,20 +159,15 @@ func (f SearchableSnapshotsMount) WithContext(v context.Context) func(*Searchabl
 }
 
 // WithMasterTimeout - explicit operation timeout for connection to master node.
+//
 func (f SearchableSnapshotsMount) WithMasterTimeout(v time.Duration) func(*SearchableSnapshotsMountRequest) {
 	return func(r *SearchableSnapshotsMountRequest) {
 		r.MasterTimeout = v
 	}
 }
 
-// WithStorage - selects the kind of local storage used to accelerate searches. experimental, and defaults to `full_copy`.
-func (f SearchableSnapshotsMount) WithStorage(v string) func(*SearchableSnapshotsMountRequest) {
-	return func(r *SearchableSnapshotsMountRequest) {
-		r.Storage = v
-	}
-}
-
 // WithWaitForCompletion - should this request wait until the operation has completed before returning.
+//
 func (f SearchableSnapshotsMount) WithWaitForCompletion(v bool) func(*SearchableSnapshotsMountRequest) {
 	return func(r *SearchableSnapshotsMountRequest) {
 		r.WaitForCompletion = &v
@@ -192,6 +175,7 @@ func (f SearchableSnapshotsMount) WithWaitForCompletion(v bool) func(*Searchable
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f SearchableSnapshotsMount) WithPretty() func(*SearchableSnapshotsMountRequest) {
 	return func(r *SearchableSnapshotsMountRequest) {
 		r.Pretty = true
@@ -199,6 +183,7 @@ func (f SearchableSnapshotsMount) WithPretty() func(*SearchableSnapshotsMountReq
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f SearchableSnapshotsMount) WithHuman() func(*SearchableSnapshotsMountRequest) {
 	return func(r *SearchableSnapshotsMountRequest) {
 		r.Human = true
@@ -206,6 +191,7 @@ func (f SearchableSnapshotsMount) WithHuman() func(*SearchableSnapshotsMountRequ
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f SearchableSnapshotsMount) WithErrorTrace() func(*SearchableSnapshotsMountRequest) {
 	return func(r *SearchableSnapshotsMountRequest) {
 		r.ErrorTrace = true
@@ -213,6 +199,7 @@ func (f SearchableSnapshotsMount) WithErrorTrace() func(*SearchableSnapshotsMoun
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f SearchableSnapshotsMount) WithFilterPath(v ...string) func(*SearchableSnapshotsMountRequest) {
 	return func(r *SearchableSnapshotsMountRequest) {
 		r.FilterPath = v
@@ -220,6 +207,7 @@ func (f SearchableSnapshotsMount) WithFilterPath(v ...string) func(*SearchableSn
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f SearchableSnapshotsMount) WithHeader(h map[string]string) func(*SearchableSnapshotsMountRequest) {
 	return func(r *SearchableSnapshotsMountRequest) {
 		if r.Header == nil {
@@ -232,6 +220,7 @@ func (f SearchableSnapshotsMount) WithHeader(h map[string]string) func(*Searchab
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f SearchableSnapshotsMount) WithOpaqueID(s string) func(*SearchableSnapshotsMountRequest) {
 	return func(r *SearchableSnapshotsMountRequest) {
 		if r.Header == nil {

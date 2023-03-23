@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -41,9 +28,11 @@ func newClusterDeleteVotingConfigExclusionsFunc(t Transport) ClusterDeleteVoting
 // ClusterDeleteVotingConfigExclusions clears cluster voting config exclusions.
 //
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/master/voting-config-exclusions.html.
+//
 type ClusterDeleteVotingConfigExclusions func(o ...func(*ClusterDeleteVotingConfigExclusionsRequest)) (*Response, error)
 
 // ClusterDeleteVotingConfigExclusionsRequest configures the Cluster Delete Voting Config Exclusions API request.
+//
 type ClusterDeleteVotingConfigExclusionsRequest struct {
 	WaitForRemoval *bool
 
@@ -58,6 +47,7 @@ type ClusterDeleteVotingConfigExclusionsRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r ClusterDeleteVotingConfigExclusionsRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -136,6 +126,7 @@ func (r ClusterDeleteVotingConfigExclusionsRequest) Do(ctx context.Context, tran
 }
 
 // WithContext sets the request context.
+//
 func (f ClusterDeleteVotingConfigExclusions) WithContext(v context.Context) func(*ClusterDeleteVotingConfigExclusionsRequest) {
 	return func(r *ClusterDeleteVotingConfigExclusionsRequest) {
 		r.ctx = v
@@ -143,6 +134,7 @@ func (f ClusterDeleteVotingConfigExclusions) WithContext(v context.Context) func
 }
 
 // WithWaitForRemoval - specifies whether to wait for all excluded nodes to be removed from the cluster before clearing the voting configuration exclusions list..
+//
 func (f ClusterDeleteVotingConfigExclusions) WithWaitForRemoval(v bool) func(*ClusterDeleteVotingConfigExclusionsRequest) {
 	return func(r *ClusterDeleteVotingConfigExclusionsRequest) {
 		r.WaitForRemoval = &v
@@ -150,6 +142,7 @@ func (f ClusterDeleteVotingConfigExclusions) WithWaitForRemoval(v bool) func(*Cl
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f ClusterDeleteVotingConfigExclusions) WithPretty() func(*ClusterDeleteVotingConfigExclusionsRequest) {
 	return func(r *ClusterDeleteVotingConfigExclusionsRequest) {
 		r.Pretty = true
@@ -157,6 +150,7 @@ func (f ClusterDeleteVotingConfigExclusions) WithPretty() func(*ClusterDeleteVot
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f ClusterDeleteVotingConfigExclusions) WithHuman() func(*ClusterDeleteVotingConfigExclusionsRequest) {
 	return func(r *ClusterDeleteVotingConfigExclusionsRequest) {
 		r.Human = true
@@ -164,6 +158,7 @@ func (f ClusterDeleteVotingConfigExclusions) WithHuman() func(*ClusterDeleteVoti
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f ClusterDeleteVotingConfigExclusions) WithErrorTrace() func(*ClusterDeleteVotingConfigExclusionsRequest) {
 	return func(r *ClusterDeleteVotingConfigExclusionsRequest) {
 		r.ErrorTrace = true
@@ -171,6 +166,7 @@ func (f ClusterDeleteVotingConfigExclusions) WithErrorTrace() func(*ClusterDelet
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f ClusterDeleteVotingConfigExclusions) WithFilterPath(v ...string) func(*ClusterDeleteVotingConfigExclusionsRequest) {
 	return func(r *ClusterDeleteVotingConfigExclusionsRequest) {
 		r.FilterPath = v
@@ -178,6 +174,7 @@ func (f ClusterDeleteVotingConfigExclusions) WithFilterPath(v ...string) func(*C
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f ClusterDeleteVotingConfigExclusions) WithHeader(h map[string]string) func(*ClusterDeleteVotingConfigExclusionsRequest) {
 	return func(r *ClusterDeleteVotingConfigExclusionsRequest) {
 		if r.Header == nil {
@@ -190,6 +187,7 @@ func (f ClusterDeleteVotingConfigExclusions) WithHeader(h map[string]string) fun
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f ClusterDeleteVotingConfigExclusions) WithOpaqueID(s string) func(*ClusterDeleteVotingConfigExclusionsRequest) {
 	return func(r *ClusterDeleteVotingConfigExclusionsRequest) {
 		if r.Header == nil {

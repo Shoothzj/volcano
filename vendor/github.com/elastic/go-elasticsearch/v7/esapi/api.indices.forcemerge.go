@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -41,9 +28,11 @@ func newIndicesForcemergeFunc(t Transport) IndicesForcemerge {
 // IndicesForcemerge performs the force merge operation on one or more indices.
 //
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-forcemerge.html.
+//
 type IndicesForcemerge func(o ...func(*IndicesForcemergeRequest)) (*Response, error)
 
 // IndicesForcemergeRequest configures the Indices Forcemerge API request.
+//
 type IndicesForcemergeRequest struct {
 	Index []string
 
@@ -65,6 +54,7 @@ type IndicesForcemergeRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r IndicesForcemergeRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -168,6 +158,7 @@ func (r IndicesForcemergeRequest) Do(ctx context.Context, transport Transport) (
 }
 
 // WithContext sets the request context.
+//
 func (f IndicesForcemerge) WithContext(v context.Context) func(*IndicesForcemergeRequest) {
 	return func(r *IndicesForcemergeRequest) {
 		r.ctx = v
@@ -175,6 +166,7 @@ func (f IndicesForcemerge) WithContext(v context.Context) func(*IndicesForcemerg
 }
 
 // WithIndex - a list of index names; use _all to perform the operation on all indices.
+//
 func (f IndicesForcemerge) WithIndex(v ...string) func(*IndicesForcemergeRequest) {
 	return func(r *IndicesForcemergeRequest) {
 		r.Index = v
@@ -182,6 +174,7 @@ func (f IndicesForcemerge) WithIndex(v ...string) func(*IndicesForcemergeRequest
 }
 
 // WithAllowNoIndices - whether to ignore if a wildcard indices expression resolves into no concrete indices. (this includes `_all` string or when no indices have been specified).
+//
 func (f IndicesForcemerge) WithAllowNoIndices(v bool) func(*IndicesForcemergeRequest) {
 	return func(r *IndicesForcemergeRequest) {
 		r.AllowNoIndices = &v
@@ -189,6 +182,7 @@ func (f IndicesForcemerge) WithAllowNoIndices(v bool) func(*IndicesForcemergeReq
 }
 
 // WithExpandWildcards - whether to expand wildcard expression to concrete indices that are open, closed or both..
+//
 func (f IndicesForcemerge) WithExpandWildcards(v string) func(*IndicesForcemergeRequest) {
 	return func(r *IndicesForcemergeRequest) {
 		r.ExpandWildcards = v
@@ -196,6 +190,7 @@ func (f IndicesForcemerge) WithExpandWildcards(v string) func(*IndicesForcemerge
 }
 
 // WithFlush - specify whether the index should be flushed after performing the operation (default: true).
+//
 func (f IndicesForcemerge) WithFlush(v bool) func(*IndicesForcemergeRequest) {
 	return func(r *IndicesForcemergeRequest) {
 		r.Flush = &v
@@ -203,6 +198,7 @@ func (f IndicesForcemerge) WithFlush(v bool) func(*IndicesForcemergeRequest) {
 }
 
 // WithIgnoreUnavailable - whether specified concrete indices should be ignored when unavailable (missing or closed).
+//
 func (f IndicesForcemerge) WithIgnoreUnavailable(v bool) func(*IndicesForcemergeRequest) {
 	return func(r *IndicesForcemergeRequest) {
 		r.IgnoreUnavailable = &v
@@ -210,6 +206,7 @@ func (f IndicesForcemerge) WithIgnoreUnavailable(v bool) func(*IndicesForcemerge
 }
 
 // WithMaxNumSegments - the number of segments the index should be merged into (default: dynamic).
+//
 func (f IndicesForcemerge) WithMaxNumSegments(v int) func(*IndicesForcemergeRequest) {
 	return func(r *IndicesForcemergeRequest) {
 		r.MaxNumSegments = &v
@@ -217,6 +214,7 @@ func (f IndicesForcemerge) WithMaxNumSegments(v int) func(*IndicesForcemergeRequ
 }
 
 // WithOnlyExpungeDeletes - specify whether the operation should only expunge deleted documents.
+//
 func (f IndicesForcemerge) WithOnlyExpungeDeletes(v bool) func(*IndicesForcemergeRequest) {
 	return func(r *IndicesForcemergeRequest) {
 		r.OnlyExpungeDeletes = &v
@@ -224,6 +222,7 @@ func (f IndicesForcemerge) WithOnlyExpungeDeletes(v bool) func(*IndicesForcemerg
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f IndicesForcemerge) WithPretty() func(*IndicesForcemergeRequest) {
 	return func(r *IndicesForcemergeRequest) {
 		r.Pretty = true
@@ -231,6 +230,7 @@ func (f IndicesForcemerge) WithPretty() func(*IndicesForcemergeRequest) {
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f IndicesForcemerge) WithHuman() func(*IndicesForcemergeRequest) {
 	return func(r *IndicesForcemergeRequest) {
 		r.Human = true
@@ -238,6 +238,7 @@ func (f IndicesForcemerge) WithHuman() func(*IndicesForcemergeRequest) {
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f IndicesForcemerge) WithErrorTrace() func(*IndicesForcemergeRequest) {
 	return func(r *IndicesForcemergeRequest) {
 		r.ErrorTrace = true
@@ -245,6 +246,7 @@ func (f IndicesForcemerge) WithErrorTrace() func(*IndicesForcemergeRequest) {
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f IndicesForcemerge) WithFilterPath(v ...string) func(*IndicesForcemergeRequest) {
 	return func(r *IndicesForcemergeRequest) {
 		r.FilterPath = v
@@ -252,6 +254,7 @@ func (f IndicesForcemerge) WithFilterPath(v ...string) func(*IndicesForcemergeRe
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f IndicesForcemerge) WithHeader(h map[string]string) func(*IndicesForcemergeRequest) {
 	return func(r *IndicesForcemergeRequest) {
 		if r.Header == nil {
@@ -264,6 +267,7 @@ func (f IndicesForcemerge) WithHeader(h map[string]string) func(*IndicesForcemer
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f IndicesForcemerge) WithOpaqueID(s string) func(*IndicesForcemergeRequest) {
 	return func(r *IndicesForcemergeRequest) {
 		if r.Header == nil {

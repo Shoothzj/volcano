@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -42,9 +29,11 @@ func newNodesStatsFunc(t Transport) NodesStats {
 // NodesStats returns statistical information about nodes in the cluster.
 //
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-nodes-stats.html.
+//
 type NodesStats func(o ...func(*NodesStatsRequest)) (*Response, error)
 
 // NodesStatsRequest configures the Nodes Stats API request.
+//
 type NodesStatsRequest struct {
 	IndexMetric []string
 	Metric      []string
@@ -55,7 +44,6 @@ type NodesStatsRequest struct {
 	Fields                  []string
 	Groups                  *bool
 	IncludeSegmentFileSizes *bool
-	IncludeUnloadedSegments *bool
 	Level                   string
 	Timeout                 time.Duration
 	Types                   []string
@@ -71,6 +59,7 @@ type NodesStatsRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r NodesStatsRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -118,10 +107,6 @@ func (r NodesStatsRequest) Do(ctx context.Context, transport Transport) (*Respon
 
 	if r.IncludeSegmentFileSizes != nil {
 		params["include_segment_file_sizes"] = strconv.FormatBool(*r.IncludeSegmentFileSizes)
-	}
-
-	if r.IncludeUnloadedSegments != nil {
-		params["include_unloaded_segments"] = strconv.FormatBool(*r.IncludeUnloadedSegments)
 	}
 
 	if r.Level != "" {
@@ -196,6 +181,7 @@ func (r NodesStatsRequest) Do(ctx context.Context, transport Transport) (*Respon
 }
 
 // WithContext sets the request context.
+//
 func (f NodesStats) WithContext(v context.Context) func(*NodesStatsRequest) {
 	return func(r *NodesStatsRequest) {
 		r.ctx = v
@@ -203,6 +189,7 @@ func (f NodesStats) WithContext(v context.Context) func(*NodesStatsRequest) {
 }
 
 // WithIndexMetric - limit the information returned for `indices` metric to the specific index metrics. isn't used if `indices` (or `all`) metric isn't specified..
+//
 func (f NodesStats) WithIndexMetric(v ...string) func(*NodesStatsRequest) {
 	return func(r *NodesStatsRequest) {
 		r.IndexMetric = v
@@ -210,6 +197,7 @@ func (f NodesStats) WithIndexMetric(v ...string) func(*NodesStatsRequest) {
 }
 
 // WithMetric - limit the information returned to the specified metrics.
+//
 func (f NodesStats) WithMetric(v ...string) func(*NodesStatsRequest) {
 	return func(r *NodesStatsRequest) {
 		r.Metric = v
@@ -217,6 +205,7 @@ func (f NodesStats) WithMetric(v ...string) func(*NodesStatsRequest) {
 }
 
 // WithNodeID - a list of node ids or names to limit the returned information; use `_local` to return information from the node you're connecting to, leave empty to get information from all nodes.
+//
 func (f NodesStats) WithNodeID(v ...string) func(*NodesStatsRequest) {
 	return func(r *NodesStatsRequest) {
 		r.NodeID = v
@@ -224,6 +213,7 @@ func (f NodesStats) WithNodeID(v ...string) func(*NodesStatsRequest) {
 }
 
 // WithCompletionFields - a list of fields for `fielddata` and `suggest` index metric (supports wildcards).
+//
 func (f NodesStats) WithCompletionFields(v ...string) func(*NodesStatsRequest) {
 	return func(r *NodesStatsRequest) {
 		r.CompletionFields = v
@@ -231,6 +221,7 @@ func (f NodesStats) WithCompletionFields(v ...string) func(*NodesStatsRequest) {
 }
 
 // WithFielddataFields - a list of fields for `fielddata` index metric (supports wildcards).
+//
 func (f NodesStats) WithFielddataFields(v ...string) func(*NodesStatsRequest) {
 	return func(r *NodesStatsRequest) {
 		r.FielddataFields = v
@@ -238,6 +229,7 @@ func (f NodesStats) WithFielddataFields(v ...string) func(*NodesStatsRequest) {
 }
 
 // WithFields - a list of fields for `fielddata` and `completion` index metric (supports wildcards).
+//
 func (f NodesStats) WithFields(v ...string) func(*NodesStatsRequest) {
 	return func(r *NodesStatsRequest) {
 		r.Fields = v
@@ -245,6 +237,7 @@ func (f NodesStats) WithFields(v ...string) func(*NodesStatsRequest) {
 }
 
 // WithGroups - a list of search groups for `search` index metric.
+//
 func (f NodesStats) WithGroups(v bool) func(*NodesStatsRequest) {
 	return func(r *NodesStatsRequest) {
 		r.Groups = &v
@@ -252,20 +245,15 @@ func (f NodesStats) WithGroups(v bool) func(*NodesStatsRequest) {
 }
 
 // WithIncludeSegmentFileSizes - whether to report the aggregated disk usage of each one of the lucene index files (only applies if segment stats are requested).
+//
 func (f NodesStats) WithIncludeSegmentFileSizes(v bool) func(*NodesStatsRequest) {
 	return func(r *NodesStatsRequest) {
 		r.IncludeSegmentFileSizes = &v
 	}
 }
 
-// WithIncludeUnloadedSegments - if set to true segment stats will include stats for segments that are not currently loaded into memory.
-func (f NodesStats) WithIncludeUnloadedSegments(v bool) func(*NodesStatsRequest) {
-	return func(r *NodesStatsRequest) {
-		r.IncludeUnloadedSegments = &v
-	}
-}
-
 // WithLevel - return indices stats aggregated at index, node or shard level.
+//
 func (f NodesStats) WithLevel(v string) func(*NodesStatsRequest) {
 	return func(r *NodesStatsRequest) {
 		r.Level = v
@@ -273,6 +261,7 @@ func (f NodesStats) WithLevel(v string) func(*NodesStatsRequest) {
 }
 
 // WithTimeout - explicit operation timeout.
+//
 func (f NodesStats) WithTimeout(v time.Duration) func(*NodesStatsRequest) {
 	return func(r *NodesStatsRequest) {
 		r.Timeout = v
@@ -280,6 +269,7 @@ func (f NodesStats) WithTimeout(v time.Duration) func(*NodesStatsRequest) {
 }
 
 // WithTypes - a list of document types for the `indexing` index metric.
+//
 func (f NodesStats) WithTypes(v ...string) func(*NodesStatsRequest) {
 	return func(r *NodesStatsRequest) {
 		r.Types = v
@@ -287,6 +277,7 @@ func (f NodesStats) WithTypes(v ...string) func(*NodesStatsRequest) {
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f NodesStats) WithPretty() func(*NodesStatsRequest) {
 	return func(r *NodesStatsRequest) {
 		r.Pretty = true
@@ -294,6 +285,7 @@ func (f NodesStats) WithPretty() func(*NodesStatsRequest) {
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f NodesStats) WithHuman() func(*NodesStatsRequest) {
 	return func(r *NodesStatsRequest) {
 		r.Human = true
@@ -301,6 +293,7 @@ func (f NodesStats) WithHuman() func(*NodesStatsRequest) {
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f NodesStats) WithErrorTrace() func(*NodesStatsRequest) {
 	return func(r *NodesStatsRequest) {
 		r.ErrorTrace = true
@@ -308,6 +301,7 @@ func (f NodesStats) WithErrorTrace() func(*NodesStatsRequest) {
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f NodesStats) WithFilterPath(v ...string) func(*NodesStatsRequest) {
 	return func(r *NodesStatsRequest) {
 		r.FilterPath = v
@@ -315,6 +309,7 @@ func (f NodesStats) WithFilterPath(v ...string) func(*NodesStatsRequest) {
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f NodesStats) WithHeader(h map[string]string) func(*NodesStatsRequest) {
 	return func(r *NodesStatsRequest) {
 		if r.Header == nil {
@@ -327,6 +322,7 @@ func (f NodesStats) WithHeader(h map[string]string) func(*NodesStatsRequest) {
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f NodesStats) WithOpaqueID(s string) func(*NodesStatsRequest) {
 	return func(r *NodesStatsRequest) {
 		if r.Header == nil {

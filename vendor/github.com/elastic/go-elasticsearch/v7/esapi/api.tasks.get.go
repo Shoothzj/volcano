@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -44,9 +31,11 @@ func newTasksGetFunc(t Transport) TasksGet {
 // This API is experimental.
 //
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/master/tasks.html.
+//
 type TasksGet func(task_id string, o ...func(*TasksGetRequest)) (*Response, error)
 
 // TasksGetRequest configures the Tasks Get API request.
+//
 type TasksGetRequest struct {
 	TaskID string
 
@@ -64,6 +53,7 @@ type TasksGetRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r TasksGetRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -149,6 +139,7 @@ func (r TasksGetRequest) Do(ctx context.Context, transport Transport) (*Response
 }
 
 // WithContext sets the request context.
+//
 func (f TasksGet) WithContext(v context.Context) func(*TasksGetRequest) {
 	return func(r *TasksGetRequest) {
 		r.ctx = v
@@ -156,6 +147,7 @@ func (f TasksGet) WithContext(v context.Context) func(*TasksGetRequest) {
 }
 
 // WithTimeout - explicit operation timeout.
+//
 func (f TasksGet) WithTimeout(v time.Duration) func(*TasksGetRequest) {
 	return func(r *TasksGetRequest) {
 		r.Timeout = v
@@ -163,6 +155,7 @@ func (f TasksGet) WithTimeout(v time.Duration) func(*TasksGetRequest) {
 }
 
 // WithWaitForCompletion - wait for the matching tasks to complete (default: false).
+//
 func (f TasksGet) WithWaitForCompletion(v bool) func(*TasksGetRequest) {
 	return func(r *TasksGetRequest) {
 		r.WaitForCompletion = &v
@@ -170,6 +163,7 @@ func (f TasksGet) WithWaitForCompletion(v bool) func(*TasksGetRequest) {
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f TasksGet) WithPretty() func(*TasksGetRequest) {
 	return func(r *TasksGetRequest) {
 		r.Pretty = true
@@ -177,6 +171,7 @@ func (f TasksGet) WithPretty() func(*TasksGetRequest) {
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f TasksGet) WithHuman() func(*TasksGetRequest) {
 	return func(r *TasksGetRequest) {
 		r.Human = true
@@ -184,6 +179,7 @@ func (f TasksGet) WithHuman() func(*TasksGetRequest) {
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f TasksGet) WithErrorTrace() func(*TasksGetRequest) {
 	return func(r *TasksGetRequest) {
 		r.ErrorTrace = true
@@ -191,6 +187,7 @@ func (f TasksGet) WithErrorTrace() func(*TasksGetRequest) {
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f TasksGet) WithFilterPath(v ...string) func(*TasksGetRequest) {
 	return func(r *TasksGetRequest) {
 		r.FilterPath = v
@@ -198,6 +195,7 @@ func (f TasksGet) WithFilterPath(v ...string) func(*TasksGetRequest) {
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f TasksGet) WithHeader(h map[string]string) func(*TasksGetRequest) {
 	return func(r *TasksGetRequest) {
 		if r.Header == nil {
@@ -210,6 +208,7 @@ func (f TasksGet) WithHeader(h map[string]string) func(*TasksGetRequest) {
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f TasksGet) WithOpaqueID(s string) func(*TasksGetRequest) {
 	return func(r *TasksGetRequest) {
 		if r.Header == nil {

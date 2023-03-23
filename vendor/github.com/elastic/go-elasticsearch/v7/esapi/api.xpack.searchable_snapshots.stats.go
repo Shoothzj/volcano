@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -37,16 +24,18 @@ func newSearchableSnapshotsStatsFunc(t Transport) SearchableSnapshotsStats {
 
 // ----- API Definition -------------------------------------------------------
 
-// SearchableSnapshotsStats - Retrieve shard-level statistics about searchable snapshots.
+// SearchableSnapshotsStats - Retrieve various statistics about searchable snapshots.
+//
+// This API is experimental.
 //
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-apis.html.
+//
 type SearchableSnapshotsStats func(o ...func(*SearchableSnapshotsStatsRequest)) (*Response, error)
 
 // SearchableSnapshotsStatsRequest configures the Searchable Snapshots Stats API request.
+//
 type SearchableSnapshotsStatsRequest struct {
 	Index []string
-
-	Level string
 
 	Pretty     bool
 	Human      bool
@@ -59,6 +48,7 @@ type SearchableSnapshotsStatsRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r SearchableSnapshotsStatsRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -79,10 +69,6 @@ func (r SearchableSnapshotsStatsRequest) Do(ctx context.Context, transport Trans
 	path.WriteString("stats")
 
 	params = make(map[string]string)
-
-	if r.Level != "" {
-		params["level"] = r.Level
-	}
 
 	if r.Pretty {
 		params["pretty"] = "true"
@@ -144,6 +130,7 @@ func (r SearchableSnapshotsStatsRequest) Do(ctx context.Context, transport Trans
 }
 
 // WithContext sets the request context.
+//
 func (f SearchableSnapshotsStats) WithContext(v context.Context) func(*SearchableSnapshotsStatsRequest) {
 	return func(r *SearchableSnapshotsStatsRequest) {
 		r.ctx = v
@@ -151,20 +138,15 @@ func (f SearchableSnapshotsStats) WithContext(v context.Context) func(*Searchabl
 }
 
 // WithIndex - a list of index names.
+//
 func (f SearchableSnapshotsStats) WithIndex(v ...string) func(*SearchableSnapshotsStatsRequest) {
 	return func(r *SearchableSnapshotsStatsRequest) {
 		r.Index = v
 	}
 }
 
-// WithLevel - return stats aggregated at cluster, index or shard level.
-func (f SearchableSnapshotsStats) WithLevel(v string) func(*SearchableSnapshotsStatsRequest) {
-	return func(r *SearchableSnapshotsStatsRequest) {
-		r.Level = v
-	}
-}
-
 // WithPretty makes the response body pretty-printed.
+//
 func (f SearchableSnapshotsStats) WithPretty() func(*SearchableSnapshotsStatsRequest) {
 	return func(r *SearchableSnapshotsStatsRequest) {
 		r.Pretty = true
@@ -172,6 +154,7 @@ func (f SearchableSnapshotsStats) WithPretty() func(*SearchableSnapshotsStatsReq
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f SearchableSnapshotsStats) WithHuman() func(*SearchableSnapshotsStatsRequest) {
 	return func(r *SearchableSnapshotsStatsRequest) {
 		r.Human = true
@@ -179,6 +162,7 @@ func (f SearchableSnapshotsStats) WithHuman() func(*SearchableSnapshotsStatsRequ
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f SearchableSnapshotsStats) WithErrorTrace() func(*SearchableSnapshotsStatsRequest) {
 	return func(r *SearchableSnapshotsStatsRequest) {
 		r.ErrorTrace = true
@@ -186,6 +170,7 @@ func (f SearchableSnapshotsStats) WithErrorTrace() func(*SearchableSnapshotsStat
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f SearchableSnapshotsStats) WithFilterPath(v ...string) func(*SearchableSnapshotsStatsRequest) {
 	return func(r *SearchableSnapshotsStatsRequest) {
 		r.FilterPath = v
@@ -193,6 +178,7 @@ func (f SearchableSnapshotsStats) WithFilterPath(v ...string) func(*SearchableSn
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f SearchableSnapshotsStats) WithHeader(h map[string]string) func(*SearchableSnapshotsStatsRequest) {
 	return func(r *SearchableSnapshotsStatsRequest) {
 		if r.Header == nil {
@@ -205,6 +191,7 @@ func (f SearchableSnapshotsStats) WithHeader(h map[string]string) func(*Searchab
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f SearchableSnapshotsStats) WithOpaqueID(s string) func(*SearchableSnapshotsStatsRequest) {
 	return func(r *SearchableSnapshotsStatsRequest) {
 		if r.Header == nil {

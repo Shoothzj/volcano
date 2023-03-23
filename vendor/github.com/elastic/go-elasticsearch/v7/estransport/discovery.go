@@ -1,19 +1,6 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
+// Licensed to Elasticsearch B.V. under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 
 package estransport
 
@@ -43,7 +30,7 @@ type nodeInfo struct {
 	ID         string
 	Name       string
 	URL        *url.URL
-	Roles      []string `json:"roles"`
+	Roles      []string
 	Attributes map[string]interface{}
 	HTTP       struct {
 		PublishAddress string `json:"publish_address"`
@@ -65,19 +52,23 @@ func (c *Client) DiscoverNodes() error {
 
 	for _, node := range nodes {
 		var (
-			isMasterOnlyNode bool
+			isDataNode   bool
+			isIngestNode bool
 		)
 
 		roles := append(node.Roles[:0:0], node.Roles...)
 		sort.Strings(roles)
 
-		if len(roles) == 1 && roles[0] == "master" {
-			isMasterOnlyNode = true
+		if i := sort.SearchStrings(roles, "data"); i < len(roles) && roles[i] == "data" {
+			isDataNode = true
+		}
+		if i := sort.SearchStrings(roles, "ingest"); i < len(roles) && roles[i] == "ingest" {
+			isIngestNode = true
 		}
 
 		if debugLogger != nil {
 			var skip string
-			if isMasterOnlyNode {
+			if !isDataNode || !isIngestNode {
 				skip = "; [SKIP]"
 			}
 			debugLogger.Logf("Discovered node [%s]; %s; roles=%s%s\n", node.Name, node.URL, node.Roles, skip)
@@ -85,7 +76,7 @@ func (c *Client) DiscoverNodes() error {
 
 		// Skip master only nodes
 		// TODO(karmi): Move logic to Selector?
-		if isMasterOnlyNode {
+		if !isDataNode || !isIngestNode {
 			continue
 		}
 
@@ -141,10 +132,6 @@ func (c *Client) getNodesInfo() ([]nodeInfo, error) {
 	c.setReqURL(conn.URL, req)
 	c.setReqAuth(conn.URL, req)
 	c.setReqUserAgent(req)
-
-	if c.disableMetaHeader == false {
-		c.setMetaHeader(req)
-	}
 
 	res, err := c.transport.RoundTrip(req)
 	if err != nil {

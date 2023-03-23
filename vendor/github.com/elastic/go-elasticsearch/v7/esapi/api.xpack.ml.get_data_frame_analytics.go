@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -40,10 +27,14 @@ func newMLGetDataFrameAnalyticsFunc(t Transport) MLGetDataFrameAnalytics {
 
 // MLGetDataFrameAnalytics - Retrieves configuration information for data frame analytics jobs.
 //
+// This API is beta.
+//
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/current/get-dfanalytics.html.
+//
 type MLGetDataFrameAnalytics func(o ...func(*MLGetDataFrameAnalyticsRequest)) (*Response, error)
 
 // MLGetDataFrameAnalyticsRequest configures the ML Get Data Frame Analytics API request.
+//
 type MLGetDataFrameAnalyticsRequest struct {
 	ID string
 
@@ -63,6 +54,7 @@ type MLGetDataFrameAnalyticsRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r MLGetDataFrameAnalyticsRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -162,6 +154,7 @@ func (r MLGetDataFrameAnalyticsRequest) Do(ctx context.Context, transport Transp
 }
 
 // WithContext sets the request context.
+//
 func (f MLGetDataFrameAnalytics) WithContext(v context.Context) func(*MLGetDataFrameAnalyticsRequest) {
 	return func(r *MLGetDataFrameAnalyticsRequest) {
 		r.ctx = v
@@ -169,6 +162,7 @@ func (f MLGetDataFrameAnalytics) WithContext(v context.Context) func(*MLGetDataF
 }
 
 // WithID - the ID of the data frame analytics to fetch.
+//
 func (f MLGetDataFrameAnalytics) WithID(v string) func(*MLGetDataFrameAnalyticsRequest) {
 	return func(r *MLGetDataFrameAnalyticsRequest) {
 		r.ID = v
@@ -176,6 +170,7 @@ func (f MLGetDataFrameAnalytics) WithID(v string) func(*MLGetDataFrameAnalyticsR
 }
 
 // WithAllowNoMatch - whether to ignore if a wildcard expression matches no data frame analytics. (this includes `_all` string or when no data frame analytics have been specified).
+//
 func (f MLGetDataFrameAnalytics) WithAllowNoMatch(v bool) func(*MLGetDataFrameAnalyticsRequest) {
 	return func(r *MLGetDataFrameAnalyticsRequest) {
 		r.AllowNoMatch = &v
@@ -183,6 +178,7 @@ func (f MLGetDataFrameAnalytics) WithAllowNoMatch(v bool) func(*MLGetDataFrameAn
 }
 
 // WithExcludeGenerated - omits fields that are illegal to set on data frame analytics put.
+//
 func (f MLGetDataFrameAnalytics) WithExcludeGenerated(v bool) func(*MLGetDataFrameAnalyticsRequest) {
 	return func(r *MLGetDataFrameAnalyticsRequest) {
 		r.ExcludeGenerated = &v
@@ -190,6 +186,7 @@ func (f MLGetDataFrameAnalytics) WithExcludeGenerated(v bool) func(*MLGetDataFra
 }
 
 // WithFrom - skips a number of analytics.
+//
 func (f MLGetDataFrameAnalytics) WithFrom(v int) func(*MLGetDataFrameAnalyticsRequest) {
 	return func(r *MLGetDataFrameAnalyticsRequest) {
 		r.From = &v
@@ -197,6 +194,7 @@ func (f MLGetDataFrameAnalytics) WithFrom(v int) func(*MLGetDataFrameAnalyticsRe
 }
 
 // WithSize - specifies a max number of analytics to get.
+//
 func (f MLGetDataFrameAnalytics) WithSize(v int) func(*MLGetDataFrameAnalyticsRequest) {
 	return func(r *MLGetDataFrameAnalyticsRequest) {
 		r.Size = &v
@@ -204,6 +202,7 @@ func (f MLGetDataFrameAnalytics) WithSize(v int) func(*MLGetDataFrameAnalyticsRe
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f MLGetDataFrameAnalytics) WithPretty() func(*MLGetDataFrameAnalyticsRequest) {
 	return func(r *MLGetDataFrameAnalyticsRequest) {
 		r.Pretty = true
@@ -211,6 +210,7 @@ func (f MLGetDataFrameAnalytics) WithPretty() func(*MLGetDataFrameAnalyticsReque
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f MLGetDataFrameAnalytics) WithHuman() func(*MLGetDataFrameAnalyticsRequest) {
 	return func(r *MLGetDataFrameAnalyticsRequest) {
 		r.Human = true
@@ -218,6 +218,7 @@ func (f MLGetDataFrameAnalytics) WithHuman() func(*MLGetDataFrameAnalyticsReques
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f MLGetDataFrameAnalytics) WithErrorTrace() func(*MLGetDataFrameAnalyticsRequest) {
 	return func(r *MLGetDataFrameAnalyticsRequest) {
 		r.ErrorTrace = true
@@ -225,6 +226,7 @@ func (f MLGetDataFrameAnalytics) WithErrorTrace() func(*MLGetDataFrameAnalyticsR
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f MLGetDataFrameAnalytics) WithFilterPath(v ...string) func(*MLGetDataFrameAnalyticsRequest) {
 	return func(r *MLGetDataFrameAnalyticsRequest) {
 		r.FilterPath = v
@@ -232,6 +234,7 @@ func (f MLGetDataFrameAnalytics) WithFilterPath(v ...string) func(*MLGetDataFram
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f MLGetDataFrameAnalytics) WithHeader(h map[string]string) func(*MLGetDataFrameAnalyticsRequest) {
 	return func(r *MLGetDataFrameAnalyticsRequest) {
 		if r.Header == nil {
@@ -244,6 +247,7 @@ func (f MLGetDataFrameAnalytics) WithHeader(h map[string]string) func(*MLGetData
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f MLGetDataFrameAnalytics) WithOpaqueID(s string) func(*MLGetDataFrameAnalyticsRequest) {
 	return func(r *MLGetDataFrameAnalyticsRequest) {
 		if r.Header == nil {

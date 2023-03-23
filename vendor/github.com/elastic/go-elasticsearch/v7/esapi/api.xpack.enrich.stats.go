@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -40,9 +27,11 @@ func newEnrichStatsFunc(t Transport) EnrichStats {
 // EnrichStats - Gets enrich coordinator statistics and information about enrich policies that are currently executing.
 //
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-stats-api.html.
+//
 type EnrichStats func(o ...func(*EnrichStatsRequest)) (*Response, error)
 
 // EnrichStatsRequest configures the Enrich Stats API request.
+//
 type EnrichStatsRequest struct {
 	Pretty     bool
 	Human      bool
@@ -55,6 +44,7 @@ type EnrichStatsRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r EnrichStatsRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -129,6 +119,7 @@ func (r EnrichStatsRequest) Do(ctx context.Context, transport Transport) (*Respo
 }
 
 // WithContext sets the request context.
+//
 func (f EnrichStats) WithContext(v context.Context) func(*EnrichStatsRequest) {
 	return func(r *EnrichStatsRequest) {
 		r.ctx = v
@@ -136,6 +127,7 @@ func (f EnrichStats) WithContext(v context.Context) func(*EnrichStatsRequest) {
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f EnrichStats) WithPretty() func(*EnrichStatsRequest) {
 	return func(r *EnrichStatsRequest) {
 		r.Pretty = true
@@ -143,6 +135,7 @@ func (f EnrichStats) WithPretty() func(*EnrichStatsRequest) {
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f EnrichStats) WithHuman() func(*EnrichStatsRequest) {
 	return func(r *EnrichStatsRequest) {
 		r.Human = true
@@ -150,6 +143,7 @@ func (f EnrichStats) WithHuman() func(*EnrichStatsRequest) {
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f EnrichStats) WithErrorTrace() func(*EnrichStatsRequest) {
 	return func(r *EnrichStatsRequest) {
 		r.ErrorTrace = true
@@ -157,6 +151,7 @@ func (f EnrichStats) WithErrorTrace() func(*EnrichStatsRequest) {
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f EnrichStats) WithFilterPath(v ...string) func(*EnrichStatsRequest) {
 	return func(r *EnrichStatsRequest) {
 		r.FilterPath = v
@@ -164,6 +159,7 @@ func (f EnrichStats) WithFilterPath(v ...string) func(*EnrichStatsRequest) {
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f EnrichStats) WithHeader(h map[string]string) func(*EnrichStatsRequest) {
 	return func(r *EnrichStatsRequest) {
 		if r.Header == nil {
@@ -176,6 +172,7 @@ func (f EnrichStats) WithHeader(h map[string]string) func(*EnrichStatsRequest) {
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f EnrichStats) WithOpaqueID(s string) func(*EnrichStatsRequest) {
 	return func(r *EnrichStatsRequest) {
 		if r.Header == nil {

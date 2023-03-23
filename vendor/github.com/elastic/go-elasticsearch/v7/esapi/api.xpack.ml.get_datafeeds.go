@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -41,9 +28,11 @@ func newMLGetDatafeedsFunc(t Transport) MLGetDatafeeds {
 // MLGetDatafeeds - Retrieves configuration information for datafeeds.
 //
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed.html.
+//
 type MLGetDatafeeds func(o ...func(*MLGetDatafeedsRequest)) (*Response, error)
 
 // MLGetDatafeedsRequest configures the ML Get Datafeeds API request.
+//
 type MLGetDatafeedsRequest struct {
 	DatafeedID string
 
@@ -62,6 +51,7 @@ type MLGetDatafeedsRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r MLGetDatafeedsRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -155,6 +145,7 @@ func (r MLGetDatafeedsRequest) Do(ctx context.Context, transport Transport) (*Re
 }
 
 // WithContext sets the request context.
+//
 func (f MLGetDatafeeds) WithContext(v context.Context) func(*MLGetDatafeedsRequest) {
 	return func(r *MLGetDatafeedsRequest) {
 		r.ctx = v
@@ -162,6 +153,7 @@ func (f MLGetDatafeeds) WithContext(v context.Context) func(*MLGetDatafeedsReque
 }
 
 // WithDatafeedID - the ID of the datafeeds to fetch.
+//
 func (f MLGetDatafeeds) WithDatafeedID(v string) func(*MLGetDatafeedsRequest) {
 	return func(r *MLGetDatafeedsRequest) {
 		r.DatafeedID = v
@@ -169,6 +161,7 @@ func (f MLGetDatafeeds) WithDatafeedID(v string) func(*MLGetDatafeedsRequest) {
 }
 
 // WithAllowNoDatafeeds - whether to ignore if a wildcard expression matches no datafeeds. (this includes `_all` string or when no datafeeds have been specified).
+//
 func (f MLGetDatafeeds) WithAllowNoDatafeeds(v bool) func(*MLGetDatafeedsRequest) {
 	return func(r *MLGetDatafeedsRequest) {
 		r.AllowNoDatafeeds = &v
@@ -176,6 +169,7 @@ func (f MLGetDatafeeds) WithAllowNoDatafeeds(v bool) func(*MLGetDatafeedsRequest
 }
 
 // WithAllowNoMatch - whether to ignore if a wildcard expression matches no datafeeds. (this includes `_all` string or when no datafeeds have been specified).
+//
 func (f MLGetDatafeeds) WithAllowNoMatch(v bool) func(*MLGetDatafeedsRequest) {
 	return func(r *MLGetDatafeedsRequest) {
 		r.AllowNoMatch = &v
@@ -183,6 +177,7 @@ func (f MLGetDatafeeds) WithAllowNoMatch(v bool) func(*MLGetDatafeedsRequest) {
 }
 
 // WithExcludeGenerated - omits fields that are illegal to set on datafeed put.
+//
 func (f MLGetDatafeeds) WithExcludeGenerated(v bool) func(*MLGetDatafeedsRequest) {
 	return func(r *MLGetDatafeedsRequest) {
 		r.ExcludeGenerated = &v
@@ -190,6 +185,7 @@ func (f MLGetDatafeeds) WithExcludeGenerated(v bool) func(*MLGetDatafeedsRequest
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f MLGetDatafeeds) WithPretty() func(*MLGetDatafeedsRequest) {
 	return func(r *MLGetDatafeedsRequest) {
 		r.Pretty = true
@@ -197,6 +193,7 @@ func (f MLGetDatafeeds) WithPretty() func(*MLGetDatafeedsRequest) {
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f MLGetDatafeeds) WithHuman() func(*MLGetDatafeedsRequest) {
 	return func(r *MLGetDatafeedsRequest) {
 		r.Human = true
@@ -204,6 +201,7 @@ func (f MLGetDatafeeds) WithHuman() func(*MLGetDatafeedsRequest) {
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f MLGetDatafeeds) WithErrorTrace() func(*MLGetDatafeedsRequest) {
 	return func(r *MLGetDatafeedsRequest) {
 		r.ErrorTrace = true
@@ -211,6 +209,7 @@ func (f MLGetDatafeeds) WithErrorTrace() func(*MLGetDatafeedsRequest) {
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f MLGetDatafeeds) WithFilterPath(v ...string) func(*MLGetDatafeedsRequest) {
 	return func(r *MLGetDatafeedsRequest) {
 		r.FilterPath = v
@@ -218,6 +217,7 @@ func (f MLGetDatafeeds) WithFilterPath(v ...string) func(*MLGetDatafeedsRequest)
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f MLGetDatafeeds) WithHeader(h map[string]string) func(*MLGetDatafeedsRequest) {
 	return func(r *MLGetDatafeedsRequest) {
 		if r.Header == nil {
@@ -230,6 +230,7 @@ func (f MLGetDatafeeds) WithHeader(h map[string]string) func(*MLGetDatafeedsRequ
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f MLGetDatafeeds) WithOpaqueID(s string) func(*MLGetDatafeedsRequest) {
 	return func(r *MLGetDatafeedsRequest) {
 		if r.Header == nil {

@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -43,9 +30,11 @@ func newDataFrameTransformDeprecatedGetTransformFunc(t Transport) DataFrameTrans
 // This API is beta.
 //
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/current/get-transform.html.
+//
 type DataFrameTransformDeprecatedGetTransform func(o ...func(*DataFrameTransformDeprecatedGetTransformRequest)) (*Response, error)
 
 // DataFrameTransformDeprecatedGetTransformRequest configures the Data Frame Transform Deprecated Get Transform API request.
+//
 type DataFrameTransformDeprecatedGetTransformRequest struct {
 	TransformID string
 
@@ -65,6 +54,7 @@ type DataFrameTransformDeprecatedGetTransformRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r DataFrameTransformDeprecatedGetTransformRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -162,6 +152,7 @@ func (r DataFrameTransformDeprecatedGetTransformRequest) Do(ctx context.Context,
 }
 
 // WithContext sets the request context.
+//
 func (f DataFrameTransformDeprecatedGetTransform) WithContext(v context.Context) func(*DataFrameTransformDeprecatedGetTransformRequest) {
 	return func(r *DataFrameTransformDeprecatedGetTransformRequest) {
 		r.ctx = v
@@ -169,6 +160,7 @@ func (f DataFrameTransformDeprecatedGetTransform) WithContext(v context.Context)
 }
 
 // WithTransformID - the ID or comma delimited list of ID expressions of the transforms to get, '_all' or '*' implies get all transforms.
+//
 func (f DataFrameTransformDeprecatedGetTransform) WithTransformID(v string) func(*DataFrameTransformDeprecatedGetTransformRequest) {
 	return func(r *DataFrameTransformDeprecatedGetTransformRequest) {
 		r.TransformID = v
@@ -176,6 +168,7 @@ func (f DataFrameTransformDeprecatedGetTransform) WithTransformID(v string) func
 }
 
 // WithAllowNoMatch - whether to ignore if a wildcard expression matches no transforms. (this includes `_all` string or when no transforms have been specified).
+//
 func (f DataFrameTransformDeprecatedGetTransform) WithAllowNoMatch(v bool) func(*DataFrameTransformDeprecatedGetTransformRequest) {
 	return func(r *DataFrameTransformDeprecatedGetTransformRequest) {
 		r.AllowNoMatch = &v
@@ -183,6 +176,7 @@ func (f DataFrameTransformDeprecatedGetTransform) WithAllowNoMatch(v bool) func(
 }
 
 // WithExcludeGenerated - omits generated fields. allows transform configurations to be easily copied between clusters and within the same cluster.
+//
 func (f DataFrameTransformDeprecatedGetTransform) WithExcludeGenerated(v bool) func(*DataFrameTransformDeprecatedGetTransformRequest) {
 	return func(r *DataFrameTransformDeprecatedGetTransformRequest) {
 		r.ExcludeGenerated = &v
@@ -190,6 +184,7 @@ func (f DataFrameTransformDeprecatedGetTransform) WithExcludeGenerated(v bool) f
 }
 
 // WithFrom - skips a number of transform configs, defaults to 0.
+//
 func (f DataFrameTransformDeprecatedGetTransform) WithFrom(v int) func(*DataFrameTransformDeprecatedGetTransformRequest) {
 	return func(r *DataFrameTransformDeprecatedGetTransformRequest) {
 		r.From = &v
@@ -197,6 +192,7 @@ func (f DataFrameTransformDeprecatedGetTransform) WithFrom(v int) func(*DataFram
 }
 
 // WithSize - specifies a max number of transforms to get, defaults to 100.
+//
 func (f DataFrameTransformDeprecatedGetTransform) WithSize(v int) func(*DataFrameTransformDeprecatedGetTransformRequest) {
 	return func(r *DataFrameTransformDeprecatedGetTransformRequest) {
 		r.Size = &v
@@ -204,6 +200,7 @@ func (f DataFrameTransformDeprecatedGetTransform) WithSize(v int) func(*DataFram
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f DataFrameTransformDeprecatedGetTransform) WithPretty() func(*DataFrameTransformDeprecatedGetTransformRequest) {
 	return func(r *DataFrameTransformDeprecatedGetTransformRequest) {
 		r.Pretty = true
@@ -211,6 +208,7 @@ func (f DataFrameTransformDeprecatedGetTransform) WithPretty() func(*DataFrameTr
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f DataFrameTransformDeprecatedGetTransform) WithHuman() func(*DataFrameTransformDeprecatedGetTransformRequest) {
 	return func(r *DataFrameTransformDeprecatedGetTransformRequest) {
 		r.Human = true
@@ -218,6 +216,7 @@ func (f DataFrameTransformDeprecatedGetTransform) WithHuman() func(*DataFrameTra
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f DataFrameTransformDeprecatedGetTransform) WithErrorTrace() func(*DataFrameTransformDeprecatedGetTransformRequest) {
 	return func(r *DataFrameTransformDeprecatedGetTransformRequest) {
 		r.ErrorTrace = true
@@ -225,6 +224,7 @@ func (f DataFrameTransformDeprecatedGetTransform) WithErrorTrace() func(*DataFra
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f DataFrameTransformDeprecatedGetTransform) WithFilterPath(v ...string) func(*DataFrameTransformDeprecatedGetTransformRequest) {
 	return func(r *DataFrameTransformDeprecatedGetTransformRequest) {
 		r.FilterPath = v
@@ -232,6 +232,7 @@ func (f DataFrameTransformDeprecatedGetTransform) WithFilterPath(v ...string) fu
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f DataFrameTransformDeprecatedGetTransform) WithHeader(h map[string]string) func(*DataFrameTransformDeprecatedGetTransformRequest) {
 	return func(r *DataFrameTransformDeprecatedGetTransformRequest) {
 		if r.Header == nil {
@@ -244,6 +245,7 @@ func (f DataFrameTransformDeprecatedGetTransform) WithHeader(h map[string]string
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f DataFrameTransformDeprecatedGetTransform) WithOpaqueID(s string) func(*DataFrameTransformDeprecatedGetTransformRequest) {
 	return func(r *DataFrameTransformDeprecatedGetTransformRequest) {
 		if r.Header == nil {

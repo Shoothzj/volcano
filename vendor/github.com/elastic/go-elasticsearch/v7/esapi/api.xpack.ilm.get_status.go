@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -40,9 +27,11 @@ func newILMGetStatusFunc(t Transport) ILMGetStatus {
 // ILMGetStatus - Retrieves the current index lifecycle management (ILM) status.
 //
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-get-status.html.
+//
 type ILMGetStatus func(o ...func(*ILMGetStatusRequest)) (*Response, error)
 
 // ILMGetStatusRequest configures the ILM Get Status API request.
+//
 type ILMGetStatusRequest struct {
 	Pretty     bool
 	Human      bool
@@ -55,6 +44,7 @@ type ILMGetStatusRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r ILMGetStatusRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -129,6 +119,7 @@ func (r ILMGetStatusRequest) Do(ctx context.Context, transport Transport) (*Resp
 }
 
 // WithContext sets the request context.
+//
 func (f ILMGetStatus) WithContext(v context.Context) func(*ILMGetStatusRequest) {
 	return func(r *ILMGetStatusRequest) {
 		r.ctx = v
@@ -136,6 +127,7 @@ func (f ILMGetStatus) WithContext(v context.Context) func(*ILMGetStatusRequest) 
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f ILMGetStatus) WithPretty() func(*ILMGetStatusRequest) {
 	return func(r *ILMGetStatusRequest) {
 		r.Pretty = true
@@ -143,6 +135,7 @@ func (f ILMGetStatus) WithPretty() func(*ILMGetStatusRequest) {
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f ILMGetStatus) WithHuman() func(*ILMGetStatusRequest) {
 	return func(r *ILMGetStatusRequest) {
 		r.Human = true
@@ -150,6 +143,7 @@ func (f ILMGetStatus) WithHuman() func(*ILMGetStatusRequest) {
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f ILMGetStatus) WithErrorTrace() func(*ILMGetStatusRequest) {
 	return func(r *ILMGetStatusRequest) {
 		r.ErrorTrace = true
@@ -157,6 +151,7 @@ func (f ILMGetStatus) WithErrorTrace() func(*ILMGetStatusRequest) {
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f ILMGetStatus) WithFilterPath(v ...string) func(*ILMGetStatusRequest) {
 	return func(r *ILMGetStatusRequest) {
 		r.FilterPath = v
@@ -164,6 +159,7 @@ func (f ILMGetStatus) WithFilterPath(v ...string) func(*ILMGetStatusRequest) {
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f ILMGetStatus) WithHeader(h map[string]string) func(*ILMGetStatusRequest) {
 	return func(r *ILMGetStatusRequest) {
 		if r.Header == nil {
@@ -176,6 +172,7 @@ func (f ILMGetStatus) WithHeader(h map[string]string) func(*ILMGetStatusRequest)
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f ILMGetStatus) WithOpaqueID(s string) func(*ILMGetStatusRequest) {
 	return func(r *ILMGetStatusRequest) {
 		if r.Header == nil {

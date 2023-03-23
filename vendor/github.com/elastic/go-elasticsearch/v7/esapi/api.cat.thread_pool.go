@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -43,9 +30,11 @@ func newCatThreadPoolFunc(t Transport) CatThreadPool {
 // By default the active, queue and rejected statistics are returned for all thread pools.
 //
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-thread-pool.html.
+//
 type CatThreadPool func(o ...func(*CatThreadPoolRequest)) (*Response, error)
 
 // CatThreadPoolRequest configures the Cat Thread Pool API request.
+//
 type CatThreadPoolRequest struct {
 	ThreadPoolPatterns []string
 
@@ -69,6 +58,7 @@ type CatThreadPoolRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r CatThreadPoolRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -182,6 +172,7 @@ func (r CatThreadPoolRequest) Do(ctx context.Context, transport Transport) (*Res
 }
 
 // WithContext sets the request context.
+//
 func (f CatThreadPool) WithContext(v context.Context) func(*CatThreadPoolRequest) {
 	return func(r *CatThreadPoolRequest) {
 		r.ctx = v
@@ -189,6 +180,7 @@ func (f CatThreadPool) WithContext(v context.Context) func(*CatThreadPoolRequest
 }
 
 // WithThreadPoolPatterns - a list of regular-expressions to filter the thread pools in the output.
+//
 func (f CatThreadPool) WithThreadPoolPatterns(v ...string) func(*CatThreadPoolRequest) {
 	return func(r *CatThreadPoolRequest) {
 		r.ThreadPoolPatterns = v
@@ -196,6 +188,7 @@ func (f CatThreadPool) WithThreadPoolPatterns(v ...string) func(*CatThreadPoolRe
 }
 
 // WithFormat - a short version of the accept header, e.g. json, yaml.
+//
 func (f CatThreadPool) WithFormat(v string) func(*CatThreadPoolRequest) {
 	return func(r *CatThreadPoolRequest) {
 		r.Format = v
@@ -203,6 +196,7 @@ func (f CatThreadPool) WithFormat(v string) func(*CatThreadPoolRequest) {
 }
 
 // WithH - comma-separated list of column names to display.
+//
 func (f CatThreadPool) WithH(v ...string) func(*CatThreadPoolRequest) {
 	return func(r *CatThreadPoolRequest) {
 		r.H = v
@@ -210,6 +204,7 @@ func (f CatThreadPool) WithH(v ...string) func(*CatThreadPoolRequest) {
 }
 
 // WithHelp - return help information.
+//
 func (f CatThreadPool) WithHelp(v bool) func(*CatThreadPoolRequest) {
 	return func(r *CatThreadPoolRequest) {
 		r.Help = &v
@@ -217,6 +212,7 @@ func (f CatThreadPool) WithHelp(v bool) func(*CatThreadPoolRequest) {
 }
 
 // WithLocal - return local information, do not retrieve the state from master node (default: false).
+//
 func (f CatThreadPool) WithLocal(v bool) func(*CatThreadPoolRequest) {
 	return func(r *CatThreadPoolRequest) {
 		r.Local = &v
@@ -224,6 +220,7 @@ func (f CatThreadPool) WithLocal(v bool) func(*CatThreadPoolRequest) {
 }
 
 // WithMasterTimeout - explicit operation timeout for connection to master node.
+//
 func (f CatThreadPool) WithMasterTimeout(v time.Duration) func(*CatThreadPoolRequest) {
 	return func(r *CatThreadPoolRequest) {
 		r.MasterTimeout = v
@@ -231,6 +228,7 @@ func (f CatThreadPool) WithMasterTimeout(v time.Duration) func(*CatThreadPoolReq
 }
 
 // WithS - comma-separated list of column names or column aliases to sort by.
+//
 func (f CatThreadPool) WithS(v ...string) func(*CatThreadPoolRequest) {
 	return func(r *CatThreadPoolRequest) {
 		r.S = v
@@ -238,6 +236,7 @@ func (f CatThreadPool) WithS(v ...string) func(*CatThreadPoolRequest) {
 }
 
 // WithSize - the multiplier in which to display values.
+//
 func (f CatThreadPool) WithSize(v string) func(*CatThreadPoolRequest) {
 	return func(r *CatThreadPoolRequest) {
 		r.Size = v
@@ -245,6 +244,7 @@ func (f CatThreadPool) WithSize(v string) func(*CatThreadPoolRequest) {
 }
 
 // WithV - verbose mode. display column headers.
+//
 func (f CatThreadPool) WithV(v bool) func(*CatThreadPoolRequest) {
 	return func(r *CatThreadPoolRequest) {
 		r.V = &v
@@ -252,6 +252,7 @@ func (f CatThreadPool) WithV(v bool) func(*CatThreadPoolRequest) {
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f CatThreadPool) WithPretty() func(*CatThreadPoolRequest) {
 	return func(r *CatThreadPoolRequest) {
 		r.Pretty = true
@@ -259,6 +260,7 @@ func (f CatThreadPool) WithPretty() func(*CatThreadPoolRequest) {
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f CatThreadPool) WithHuman() func(*CatThreadPoolRequest) {
 	return func(r *CatThreadPoolRequest) {
 		r.Human = true
@@ -266,6 +268,7 @@ func (f CatThreadPool) WithHuman() func(*CatThreadPoolRequest) {
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f CatThreadPool) WithErrorTrace() func(*CatThreadPoolRequest) {
 	return func(r *CatThreadPoolRequest) {
 		r.ErrorTrace = true
@@ -273,6 +276,7 @@ func (f CatThreadPool) WithErrorTrace() func(*CatThreadPoolRequest) {
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f CatThreadPool) WithFilterPath(v ...string) func(*CatThreadPoolRequest) {
 	return func(r *CatThreadPoolRequest) {
 		r.FilterPath = v
@@ -280,6 +284,7 @@ func (f CatThreadPool) WithFilterPath(v ...string) func(*CatThreadPoolRequest) {
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f CatThreadPool) WithHeader(h map[string]string) func(*CatThreadPoolRequest) {
 	return func(r *CatThreadPoolRequest) {
 		if r.Header == nil {
@@ -292,6 +297,7 @@ func (f CatThreadPool) WithHeader(h map[string]string) func(*CatThreadPoolReques
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f CatThreadPool) WithOpaqueID(s string) func(*CatThreadPoolRequest) {
 	return func(r *CatThreadPoolRequest) {
 		if r.Header == nil {

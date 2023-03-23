@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -42,9 +29,11 @@ func newIndicesCloneFunc(t Transport) IndicesClone {
 // IndicesClone clones an index
 //
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-clone-index.html.
+//
 type IndicesClone func(index string, target string, o ...func(*IndicesCloneRequest)) (*Response, error)
 
 // IndicesCloneRequest configures the Indices Clone API request.
+//
 type IndicesCloneRequest struct {
 	Index string
 
@@ -67,6 +56,7 @@ type IndicesCloneRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r IndicesCloneRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -127,6 +117,10 @@ func (r IndicesCloneRequest) Do(ctx context.Context, transport Transport) (*Resp
 		req.URL.RawQuery = q.Encode()
 	}
 
+	if r.Body != nil {
+		req.Header[headerContentType] = headerContentTypeJSON
+	}
+
 	if len(r.Header) > 0 {
 		if len(req.Header) == 0 {
 			req.Header = r.Header
@@ -137,10 +131,6 @@ func (r IndicesCloneRequest) Do(ctx context.Context, transport Transport) (*Resp
 				}
 			}
 		}
-	}
-
-	if r.Body != nil && req.Header.Get(headerContentType) == "" {
-		req.Header[headerContentType] = headerContentTypeJSON
 	}
 
 	if ctx != nil {
@@ -162,6 +152,7 @@ func (r IndicesCloneRequest) Do(ctx context.Context, transport Transport) (*Resp
 }
 
 // WithContext sets the request context.
+//
 func (f IndicesClone) WithContext(v context.Context) func(*IndicesCloneRequest) {
 	return func(r *IndicesCloneRequest) {
 		r.ctx = v
@@ -169,6 +160,7 @@ func (f IndicesClone) WithContext(v context.Context) func(*IndicesCloneRequest) 
 }
 
 // WithBody - The configuration for the target index (`settings` and `aliases`).
+//
 func (f IndicesClone) WithBody(v io.Reader) func(*IndicesCloneRequest) {
 	return func(r *IndicesCloneRequest) {
 		r.Body = v
@@ -176,6 +168,7 @@ func (f IndicesClone) WithBody(v io.Reader) func(*IndicesCloneRequest) {
 }
 
 // WithMasterTimeout - specify timeout for connection to master.
+//
 func (f IndicesClone) WithMasterTimeout(v time.Duration) func(*IndicesCloneRequest) {
 	return func(r *IndicesCloneRequest) {
 		r.MasterTimeout = v
@@ -183,6 +176,7 @@ func (f IndicesClone) WithMasterTimeout(v time.Duration) func(*IndicesCloneReque
 }
 
 // WithTimeout - explicit operation timeout.
+//
 func (f IndicesClone) WithTimeout(v time.Duration) func(*IndicesCloneRequest) {
 	return func(r *IndicesCloneRequest) {
 		r.Timeout = v
@@ -190,6 +184,7 @@ func (f IndicesClone) WithTimeout(v time.Duration) func(*IndicesCloneRequest) {
 }
 
 // WithWaitForActiveShards - set the number of active shards to wait for on the cloned index before the operation returns..
+//
 func (f IndicesClone) WithWaitForActiveShards(v string) func(*IndicesCloneRequest) {
 	return func(r *IndicesCloneRequest) {
 		r.WaitForActiveShards = v
@@ -197,6 +192,7 @@ func (f IndicesClone) WithWaitForActiveShards(v string) func(*IndicesCloneReques
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f IndicesClone) WithPretty() func(*IndicesCloneRequest) {
 	return func(r *IndicesCloneRequest) {
 		r.Pretty = true
@@ -204,6 +200,7 @@ func (f IndicesClone) WithPretty() func(*IndicesCloneRequest) {
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f IndicesClone) WithHuman() func(*IndicesCloneRequest) {
 	return func(r *IndicesCloneRequest) {
 		r.Human = true
@@ -211,6 +208,7 @@ func (f IndicesClone) WithHuman() func(*IndicesCloneRequest) {
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f IndicesClone) WithErrorTrace() func(*IndicesCloneRequest) {
 	return func(r *IndicesCloneRequest) {
 		r.ErrorTrace = true
@@ -218,6 +216,7 @@ func (f IndicesClone) WithErrorTrace() func(*IndicesCloneRequest) {
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f IndicesClone) WithFilterPath(v ...string) func(*IndicesCloneRequest) {
 	return func(r *IndicesCloneRequest) {
 		r.FilterPath = v
@@ -225,6 +224,7 @@ func (f IndicesClone) WithFilterPath(v ...string) func(*IndicesCloneRequest) {
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f IndicesClone) WithHeader(h map[string]string) func(*IndicesCloneRequest) {
 	return func(r *IndicesCloneRequest) {
 		if r.Header == nil {
@@ -237,6 +237,7 @@ func (f IndicesClone) WithHeader(h map[string]string) func(*IndicesCloneRequest)
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f IndicesClone) WithOpaqueID(s string) func(*IndicesCloneRequest) {
 	return func(r *IndicesCloneRequest) {
 		if r.Header == nil {

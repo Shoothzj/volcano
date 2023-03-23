@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -42,9 +29,11 @@ func newFieldCapsFunc(t Transport) FieldCaps {
 // FieldCaps returns the information about the capabilities of fields among multiple indices.
 //
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/master/search-field-caps.html.
+//
 type FieldCaps func(o ...func(*FieldCapsRequest)) (*Response, error)
 
 // FieldCapsRequest configures the Field Caps API request.
+//
 type FieldCapsRequest struct {
 	Index []string
 
@@ -67,6 +56,7 @@ type FieldCapsRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r FieldCapsRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -74,7 +64,7 @@ func (r FieldCapsRequest) Do(ctx context.Context, transport Transport) (*Respons
 		params map[string]string
 	)
 
-	method = "POST"
+	method = "GET"
 
 	path.Grow(1 + len(strings.Join(r.Index, ",")) + 1 + len("_field_caps"))
 	if len(r.Index) > 0 {
@@ -135,6 +125,10 @@ func (r FieldCapsRequest) Do(ctx context.Context, transport Transport) (*Respons
 		req.URL.RawQuery = q.Encode()
 	}
 
+	if r.Body != nil {
+		req.Header[headerContentType] = headerContentTypeJSON
+	}
+
 	if len(r.Header) > 0 {
 		if len(req.Header) == 0 {
 			req.Header = r.Header
@@ -145,10 +139,6 @@ func (r FieldCapsRequest) Do(ctx context.Context, transport Transport) (*Respons
 				}
 			}
 		}
-	}
-
-	if r.Body != nil && req.Header.Get(headerContentType) == "" {
-		req.Header[headerContentType] = headerContentTypeJSON
 	}
 
 	if ctx != nil {
@@ -170,6 +160,7 @@ func (r FieldCapsRequest) Do(ctx context.Context, transport Transport) (*Respons
 }
 
 // WithContext sets the request context.
+//
 func (f FieldCaps) WithContext(v context.Context) func(*FieldCapsRequest) {
 	return func(r *FieldCapsRequest) {
 		r.ctx = v
@@ -177,6 +168,7 @@ func (f FieldCaps) WithContext(v context.Context) func(*FieldCapsRequest) {
 }
 
 // WithBody - An index filter specified with the Query DSL.
+//
 func (f FieldCaps) WithBody(v io.Reader) func(*FieldCapsRequest) {
 	return func(r *FieldCapsRequest) {
 		r.Body = v
@@ -184,6 +176,7 @@ func (f FieldCaps) WithBody(v io.Reader) func(*FieldCapsRequest) {
 }
 
 // WithIndex - a list of index names; use _all to perform the operation on all indices.
+//
 func (f FieldCaps) WithIndex(v ...string) func(*FieldCapsRequest) {
 	return func(r *FieldCapsRequest) {
 		r.Index = v
@@ -191,6 +184,7 @@ func (f FieldCaps) WithIndex(v ...string) func(*FieldCapsRequest) {
 }
 
 // WithAllowNoIndices - whether to ignore if a wildcard indices expression resolves into no concrete indices. (this includes `_all` string or when no indices have been specified).
+//
 func (f FieldCaps) WithAllowNoIndices(v bool) func(*FieldCapsRequest) {
 	return func(r *FieldCapsRequest) {
 		r.AllowNoIndices = &v
@@ -198,6 +192,7 @@ func (f FieldCaps) WithAllowNoIndices(v bool) func(*FieldCapsRequest) {
 }
 
 // WithExpandWildcards - whether to expand wildcard expression to concrete indices that are open, closed or both..
+//
 func (f FieldCaps) WithExpandWildcards(v string) func(*FieldCapsRequest) {
 	return func(r *FieldCapsRequest) {
 		r.ExpandWildcards = v
@@ -205,6 +200,7 @@ func (f FieldCaps) WithExpandWildcards(v string) func(*FieldCapsRequest) {
 }
 
 // WithFields - a list of field names.
+//
 func (f FieldCaps) WithFields(v ...string) func(*FieldCapsRequest) {
 	return func(r *FieldCapsRequest) {
 		r.Fields = v
@@ -212,6 +208,7 @@ func (f FieldCaps) WithFields(v ...string) func(*FieldCapsRequest) {
 }
 
 // WithIgnoreUnavailable - whether specified concrete indices should be ignored when unavailable (missing or closed).
+//
 func (f FieldCaps) WithIgnoreUnavailable(v bool) func(*FieldCapsRequest) {
 	return func(r *FieldCapsRequest) {
 		r.IgnoreUnavailable = &v
@@ -219,6 +216,7 @@ func (f FieldCaps) WithIgnoreUnavailable(v bool) func(*FieldCapsRequest) {
 }
 
 // WithIncludeUnmapped - indicates whether unmapped fields should be included in the response..
+//
 func (f FieldCaps) WithIncludeUnmapped(v bool) func(*FieldCapsRequest) {
 	return func(r *FieldCapsRequest) {
 		r.IncludeUnmapped = &v
@@ -226,6 +224,7 @@ func (f FieldCaps) WithIncludeUnmapped(v bool) func(*FieldCapsRequest) {
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f FieldCaps) WithPretty() func(*FieldCapsRequest) {
 	return func(r *FieldCapsRequest) {
 		r.Pretty = true
@@ -233,6 +232,7 @@ func (f FieldCaps) WithPretty() func(*FieldCapsRequest) {
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f FieldCaps) WithHuman() func(*FieldCapsRequest) {
 	return func(r *FieldCapsRequest) {
 		r.Human = true
@@ -240,6 +240,7 @@ func (f FieldCaps) WithHuman() func(*FieldCapsRequest) {
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f FieldCaps) WithErrorTrace() func(*FieldCapsRequest) {
 	return func(r *FieldCapsRequest) {
 		r.ErrorTrace = true
@@ -247,6 +248,7 @@ func (f FieldCaps) WithErrorTrace() func(*FieldCapsRequest) {
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f FieldCaps) WithFilterPath(v ...string) func(*FieldCapsRequest) {
 	return func(r *FieldCapsRequest) {
 		r.FilterPath = v
@@ -254,6 +256,7 @@ func (f FieldCaps) WithFilterPath(v ...string) func(*FieldCapsRequest) {
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f FieldCaps) WithHeader(h map[string]string) func(*FieldCapsRequest) {
 	return func(r *FieldCapsRequest) {
 		if r.Header == nil {
@@ -266,6 +269,7 @@ func (f FieldCaps) WithHeader(h map[string]string) func(*FieldCapsRequest) {
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f FieldCaps) WithOpaqueID(s string) func(*FieldCapsRequest) {
 	return func(r *FieldCapsRequest) {
 		if r.Header == nil {

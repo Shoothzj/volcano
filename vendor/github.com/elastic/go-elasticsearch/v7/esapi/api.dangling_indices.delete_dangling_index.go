@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -42,9 +29,11 @@ func newDanglingIndicesDeleteDanglingIndexFunc(t Transport) DanglingIndicesDelet
 // DanglingIndicesDeleteDanglingIndex deletes the specified dangling index
 //
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-gateway-dangling-indices.html.
+//
 type DanglingIndicesDeleteDanglingIndex func(index_uuid string, o ...func(*DanglingIndicesDeleteDanglingIndexRequest)) (*Response, error)
 
 // DanglingIndicesDeleteDanglingIndexRequest configures the Dangling Indices Delete Dangling Index API request.
+//
 type DanglingIndicesDeleteDanglingIndexRequest struct {
 	IndexUUID string
 
@@ -63,6 +52,7 @@ type DanglingIndicesDeleteDanglingIndexRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r DanglingIndicesDeleteDanglingIndexRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -152,6 +142,7 @@ func (r DanglingIndicesDeleteDanglingIndexRequest) Do(ctx context.Context, trans
 }
 
 // WithContext sets the request context.
+//
 func (f DanglingIndicesDeleteDanglingIndex) WithContext(v context.Context) func(*DanglingIndicesDeleteDanglingIndexRequest) {
 	return func(r *DanglingIndicesDeleteDanglingIndexRequest) {
 		r.ctx = v
@@ -159,6 +150,7 @@ func (f DanglingIndicesDeleteDanglingIndex) WithContext(v context.Context) func(
 }
 
 // WithAcceptDataLoss - must be set to true in order to delete the dangling index.
+//
 func (f DanglingIndicesDeleteDanglingIndex) WithAcceptDataLoss(v bool) func(*DanglingIndicesDeleteDanglingIndexRequest) {
 	return func(r *DanglingIndicesDeleteDanglingIndexRequest) {
 		r.AcceptDataLoss = &v
@@ -166,6 +158,7 @@ func (f DanglingIndicesDeleteDanglingIndex) WithAcceptDataLoss(v bool) func(*Dan
 }
 
 // WithMasterTimeout - specify timeout for connection to master.
+//
 func (f DanglingIndicesDeleteDanglingIndex) WithMasterTimeout(v time.Duration) func(*DanglingIndicesDeleteDanglingIndexRequest) {
 	return func(r *DanglingIndicesDeleteDanglingIndexRequest) {
 		r.MasterTimeout = v
@@ -173,6 +166,7 @@ func (f DanglingIndicesDeleteDanglingIndex) WithMasterTimeout(v time.Duration) f
 }
 
 // WithTimeout - explicit operation timeout.
+//
 func (f DanglingIndicesDeleteDanglingIndex) WithTimeout(v time.Duration) func(*DanglingIndicesDeleteDanglingIndexRequest) {
 	return func(r *DanglingIndicesDeleteDanglingIndexRequest) {
 		r.Timeout = v
@@ -180,6 +174,7 @@ func (f DanglingIndicesDeleteDanglingIndex) WithTimeout(v time.Duration) func(*D
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f DanglingIndicesDeleteDanglingIndex) WithPretty() func(*DanglingIndicesDeleteDanglingIndexRequest) {
 	return func(r *DanglingIndicesDeleteDanglingIndexRequest) {
 		r.Pretty = true
@@ -187,6 +182,7 @@ func (f DanglingIndicesDeleteDanglingIndex) WithPretty() func(*DanglingIndicesDe
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f DanglingIndicesDeleteDanglingIndex) WithHuman() func(*DanglingIndicesDeleteDanglingIndexRequest) {
 	return func(r *DanglingIndicesDeleteDanglingIndexRequest) {
 		r.Human = true
@@ -194,6 +190,7 @@ func (f DanglingIndicesDeleteDanglingIndex) WithHuman() func(*DanglingIndicesDel
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f DanglingIndicesDeleteDanglingIndex) WithErrorTrace() func(*DanglingIndicesDeleteDanglingIndexRequest) {
 	return func(r *DanglingIndicesDeleteDanglingIndexRequest) {
 		r.ErrorTrace = true
@@ -201,6 +198,7 @@ func (f DanglingIndicesDeleteDanglingIndex) WithErrorTrace() func(*DanglingIndic
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f DanglingIndicesDeleteDanglingIndex) WithFilterPath(v ...string) func(*DanglingIndicesDeleteDanglingIndexRequest) {
 	return func(r *DanglingIndicesDeleteDanglingIndexRequest) {
 		r.FilterPath = v
@@ -208,6 +206,7 @@ func (f DanglingIndicesDeleteDanglingIndex) WithFilterPath(v ...string) func(*Da
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f DanglingIndicesDeleteDanglingIndex) WithHeader(h map[string]string) func(*DanglingIndicesDeleteDanglingIndexRequest) {
 	return func(r *DanglingIndicesDeleteDanglingIndexRequest) {
 		if r.Header == nil {
@@ -220,6 +219,7 @@ func (f DanglingIndicesDeleteDanglingIndex) WithHeader(h map[string]string) func
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f DanglingIndicesDeleteDanglingIndex) WithOpaqueID(s string) func(*DanglingIndicesDeleteDanglingIndexRequest) {
 	return func(r *DanglingIndicesDeleteDanglingIndexRequest) {
 		if r.Header == nil {

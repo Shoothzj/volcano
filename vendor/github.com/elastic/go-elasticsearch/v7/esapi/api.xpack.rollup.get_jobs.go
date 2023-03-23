@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -42,9 +29,11 @@ func newRollupGetJobsFunc(t Transport) RollupGetJobs {
 // This API is experimental.
 //
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/master/rollup-get-job.html.
+//
 type RollupGetJobs func(o ...func(*RollupGetJobsRequest)) (*Response, error)
 
 // RollupGetJobsRequest configures the Rollup Get Jobs API request.
+//
 type RollupGetJobsRequest struct {
 	JobID string
 
@@ -59,6 +48,7 @@ type RollupGetJobsRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r RollupGetJobsRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -140,6 +130,7 @@ func (r RollupGetJobsRequest) Do(ctx context.Context, transport Transport) (*Res
 }
 
 // WithContext sets the request context.
+//
 func (f RollupGetJobs) WithContext(v context.Context) func(*RollupGetJobsRequest) {
 	return func(r *RollupGetJobsRequest) {
 		r.ctx = v
@@ -147,6 +138,7 @@ func (f RollupGetJobs) WithContext(v context.Context) func(*RollupGetJobsRequest
 }
 
 // WithJobID - the ID of the job(s) to fetch. accepts glob patterns, or left blank for all jobs.
+//
 func (f RollupGetJobs) WithJobID(v string) func(*RollupGetJobsRequest) {
 	return func(r *RollupGetJobsRequest) {
 		r.JobID = v
@@ -154,6 +146,7 @@ func (f RollupGetJobs) WithJobID(v string) func(*RollupGetJobsRequest) {
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f RollupGetJobs) WithPretty() func(*RollupGetJobsRequest) {
 	return func(r *RollupGetJobsRequest) {
 		r.Pretty = true
@@ -161,6 +154,7 @@ func (f RollupGetJobs) WithPretty() func(*RollupGetJobsRequest) {
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f RollupGetJobs) WithHuman() func(*RollupGetJobsRequest) {
 	return func(r *RollupGetJobsRequest) {
 		r.Human = true
@@ -168,6 +162,7 @@ func (f RollupGetJobs) WithHuman() func(*RollupGetJobsRequest) {
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f RollupGetJobs) WithErrorTrace() func(*RollupGetJobsRequest) {
 	return func(r *RollupGetJobsRequest) {
 		r.ErrorTrace = true
@@ -175,6 +170,7 @@ func (f RollupGetJobs) WithErrorTrace() func(*RollupGetJobsRequest) {
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f RollupGetJobs) WithFilterPath(v ...string) func(*RollupGetJobsRequest) {
 	return func(r *RollupGetJobsRequest) {
 		r.FilterPath = v
@@ -182,6 +178,7 @@ func (f RollupGetJobs) WithFilterPath(v ...string) func(*RollupGetJobsRequest) {
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f RollupGetJobs) WithHeader(h map[string]string) func(*RollupGetJobsRequest) {
 	return func(r *RollupGetJobsRequest) {
 		if r.Header == nil {
@@ -194,6 +191,7 @@ func (f RollupGetJobs) WithHeader(h map[string]string) func(*RollupGetJobsReques
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f RollupGetJobs) WithOpaqueID(s string) func(*RollupGetJobsRequest) {
 	return func(r *RollupGetJobsRequest) {
 		if r.Header == nil {

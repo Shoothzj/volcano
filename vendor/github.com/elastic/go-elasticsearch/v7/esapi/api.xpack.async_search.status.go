@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -40,9 +27,11 @@ func newAsyncSearchStatusFunc(t Transport) AsyncSearchStatus {
 // AsyncSearchStatus - Retrieves the status of a previously submitted async search request given its ID.
 //
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html.
+//
 type AsyncSearchStatus func(id string, o ...func(*AsyncSearchStatusRequest)) (*Response, error)
 
 // AsyncSearchStatusRequest configures the Async Search Status API request.
+//
 type AsyncSearchStatusRequest struct {
 	DocumentID string
 
@@ -57,6 +46,7 @@ type AsyncSearchStatusRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r AsyncSearchStatusRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -136,6 +126,7 @@ func (r AsyncSearchStatusRequest) Do(ctx context.Context, transport Transport) (
 }
 
 // WithContext sets the request context.
+//
 func (f AsyncSearchStatus) WithContext(v context.Context) func(*AsyncSearchStatusRequest) {
 	return func(r *AsyncSearchStatusRequest) {
 		r.ctx = v
@@ -143,6 +134,7 @@ func (f AsyncSearchStatus) WithContext(v context.Context) func(*AsyncSearchStatu
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f AsyncSearchStatus) WithPretty() func(*AsyncSearchStatusRequest) {
 	return func(r *AsyncSearchStatusRequest) {
 		r.Pretty = true
@@ -150,6 +142,7 @@ func (f AsyncSearchStatus) WithPretty() func(*AsyncSearchStatusRequest) {
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f AsyncSearchStatus) WithHuman() func(*AsyncSearchStatusRequest) {
 	return func(r *AsyncSearchStatusRequest) {
 		r.Human = true
@@ -157,6 +150,7 @@ func (f AsyncSearchStatus) WithHuman() func(*AsyncSearchStatusRequest) {
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f AsyncSearchStatus) WithErrorTrace() func(*AsyncSearchStatusRequest) {
 	return func(r *AsyncSearchStatusRequest) {
 		r.ErrorTrace = true
@@ -164,6 +158,7 @@ func (f AsyncSearchStatus) WithErrorTrace() func(*AsyncSearchStatusRequest) {
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f AsyncSearchStatus) WithFilterPath(v ...string) func(*AsyncSearchStatusRequest) {
 	return func(r *AsyncSearchStatusRequest) {
 		r.FilterPath = v
@@ -171,6 +166,7 @@ func (f AsyncSearchStatus) WithFilterPath(v ...string) func(*AsyncSearchStatusRe
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f AsyncSearchStatus) WithHeader(h map[string]string) func(*AsyncSearchStatusRequest) {
 	return func(r *AsyncSearchStatusRequest) {
 		if r.Header == nil {
@@ -183,6 +179,7 @@ func (f AsyncSearchStatus) WithHeader(h map[string]string) func(*AsyncSearchStat
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f AsyncSearchStatus) WithOpaqueID(s string) func(*AsyncSearchStatusRequest) {
 	return func(r *AsyncSearchStatusRequest) {
 		if r.Header == nil {

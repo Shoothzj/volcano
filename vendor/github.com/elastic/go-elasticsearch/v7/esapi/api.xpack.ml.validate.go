@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -41,9 +28,11 @@ func newMLValidateFunc(t Transport) MLValidate {
 // MLValidate - Validates an anomaly detection job.
 //
 // See full documentation at https://www.elastic.co/guide/en/machine-learning/current/ml-jobs.html.
+//
 type MLValidate func(body io.Reader, o ...func(*MLValidateRequest)) (*Response, error)
 
 // MLValidateRequest configures the ML Validate API request.
+//
 type MLValidateRequest struct {
 	Body io.Reader
 
@@ -58,6 +47,7 @@ type MLValidateRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r MLValidateRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -101,6 +91,10 @@ func (r MLValidateRequest) Do(ctx context.Context, transport Transport) (*Respon
 		req.URL.RawQuery = q.Encode()
 	}
 
+	if r.Body != nil {
+		req.Header[headerContentType] = headerContentTypeJSON
+	}
+
 	if len(r.Header) > 0 {
 		if len(req.Header) == 0 {
 			req.Header = r.Header
@@ -111,10 +105,6 @@ func (r MLValidateRequest) Do(ctx context.Context, transport Transport) (*Respon
 				}
 			}
 		}
-	}
-
-	if r.Body != nil && req.Header.Get(headerContentType) == "" {
-		req.Header[headerContentType] = headerContentTypeJSON
 	}
 
 	if ctx != nil {
@@ -136,6 +126,7 @@ func (r MLValidateRequest) Do(ctx context.Context, transport Transport) (*Respon
 }
 
 // WithContext sets the request context.
+//
 func (f MLValidate) WithContext(v context.Context) func(*MLValidateRequest) {
 	return func(r *MLValidateRequest) {
 		r.ctx = v
@@ -143,6 +134,7 @@ func (f MLValidate) WithContext(v context.Context) func(*MLValidateRequest) {
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f MLValidate) WithPretty() func(*MLValidateRequest) {
 	return func(r *MLValidateRequest) {
 		r.Pretty = true
@@ -150,6 +142,7 @@ func (f MLValidate) WithPretty() func(*MLValidateRequest) {
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f MLValidate) WithHuman() func(*MLValidateRequest) {
 	return func(r *MLValidateRequest) {
 		r.Human = true
@@ -157,6 +150,7 @@ func (f MLValidate) WithHuman() func(*MLValidateRequest) {
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f MLValidate) WithErrorTrace() func(*MLValidateRequest) {
 	return func(r *MLValidateRequest) {
 		r.ErrorTrace = true
@@ -164,6 +158,7 @@ func (f MLValidate) WithErrorTrace() func(*MLValidateRequest) {
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f MLValidate) WithFilterPath(v ...string) func(*MLValidateRequest) {
 	return func(r *MLValidateRequest) {
 		r.FilterPath = v
@@ -171,6 +166,7 @@ func (f MLValidate) WithFilterPath(v ...string) func(*MLValidateRequest) {
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f MLValidate) WithHeader(h map[string]string) func(*MLValidateRequest) {
 	return func(r *MLValidateRequest) {
 		if r.Header == nil {
@@ -183,6 +179,7 @@ func (f MLValidate) WithHeader(h map[string]string) func(*MLValidateRequest) {
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f MLValidate) WithOpaqueID(s string) func(*MLValidateRequest) {
 	return func(r *MLValidateRequest) {
 		if r.Header == nil {

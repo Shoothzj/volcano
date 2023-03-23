@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -42,9 +29,11 @@ func newClusterStatsFunc(t Transport) ClusterStats {
 // ClusterStats returns high-level overview of cluster statistics.
 //
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-stats.html.
+//
 type ClusterStats func(o ...func(*ClusterStatsRequest)) (*Response, error)
 
 // ClusterStatsRequest configures the Cluster Stats API request.
+//
 type ClusterStatsRequest struct {
 	NodeID []string
 
@@ -62,6 +51,7 @@ type ClusterStatsRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r ClusterStatsRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -153,6 +143,7 @@ func (r ClusterStatsRequest) Do(ctx context.Context, transport Transport) (*Resp
 }
 
 // WithContext sets the request context.
+//
 func (f ClusterStats) WithContext(v context.Context) func(*ClusterStatsRequest) {
 	return func(r *ClusterStatsRequest) {
 		r.ctx = v
@@ -160,6 +151,7 @@ func (f ClusterStats) WithContext(v context.Context) func(*ClusterStatsRequest) 
 }
 
 // WithNodeID - a list of node ids or names to limit the returned information; use `_local` to return information from the node you're connecting to, leave empty to get information from all nodes.
+//
 func (f ClusterStats) WithNodeID(v ...string) func(*ClusterStatsRequest) {
 	return func(r *ClusterStatsRequest) {
 		r.NodeID = v
@@ -167,6 +159,7 @@ func (f ClusterStats) WithNodeID(v ...string) func(*ClusterStatsRequest) {
 }
 
 // WithFlatSettings - return settings in flat format (default: false).
+//
 func (f ClusterStats) WithFlatSettings(v bool) func(*ClusterStatsRequest) {
 	return func(r *ClusterStatsRequest) {
 		r.FlatSettings = &v
@@ -174,6 +167,7 @@ func (f ClusterStats) WithFlatSettings(v bool) func(*ClusterStatsRequest) {
 }
 
 // WithTimeout - explicit operation timeout.
+//
 func (f ClusterStats) WithTimeout(v time.Duration) func(*ClusterStatsRequest) {
 	return func(r *ClusterStatsRequest) {
 		r.Timeout = v
@@ -181,6 +175,7 @@ func (f ClusterStats) WithTimeout(v time.Duration) func(*ClusterStatsRequest) {
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f ClusterStats) WithPretty() func(*ClusterStatsRequest) {
 	return func(r *ClusterStatsRequest) {
 		r.Pretty = true
@@ -188,6 +183,7 @@ func (f ClusterStats) WithPretty() func(*ClusterStatsRequest) {
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f ClusterStats) WithHuman() func(*ClusterStatsRequest) {
 	return func(r *ClusterStatsRequest) {
 		r.Human = true
@@ -195,6 +191,7 @@ func (f ClusterStats) WithHuman() func(*ClusterStatsRequest) {
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f ClusterStats) WithErrorTrace() func(*ClusterStatsRequest) {
 	return func(r *ClusterStatsRequest) {
 		r.ErrorTrace = true
@@ -202,6 +199,7 @@ func (f ClusterStats) WithErrorTrace() func(*ClusterStatsRequest) {
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f ClusterStats) WithFilterPath(v ...string) func(*ClusterStatsRequest) {
 	return func(r *ClusterStatsRequest) {
 		r.FilterPath = v
@@ -209,6 +207,7 @@ func (f ClusterStats) WithFilterPath(v ...string) func(*ClusterStatsRequest) {
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f ClusterStats) WithHeader(h map[string]string) func(*ClusterStatsRequest) {
 	return func(r *ClusterStatsRequest) {
 		if r.Header == nil {
@@ -221,6 +220,7 @@ func (f ClusterStats) WithHeader(h map[string]string) func(*ClusterStatsRequest)
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f ClusterStats) WithOpaqueID(s string) func(*ClusterStatsRequest) {
 	return func(r *ClusterStatsRequest) {
 		if r.Header == nil {

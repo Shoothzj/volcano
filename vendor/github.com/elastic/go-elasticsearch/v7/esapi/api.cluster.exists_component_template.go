@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -42,9 +29,11 @@ func newClusterExistsComponentTemplateFunc(t Transport) ClusterExistsComponentTe
 // ClusterExistsComponentTemplate returns information about whether a particular component template exist
 //
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-component-template.html.
+//
 type ClusterExistsComponentTemplate func(name string, o ...func(*ClusterExistsComponentTemplateRequest)) (*Response, error)
 
 // ClusterExistsComponentTemplateRequest configures the Cluster Exists Component Template API request.
+//
 type ClusterExistsComponentTemplateRequest struct {
 	Name string
 
@@ -62,6 +51,7 @@ type ClusterExistsComponentTemplateRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r ClusterExistsComponentTemplateRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -147,6 +137,7 @@ func (r ClusterExistsComponentTemplateRequest) Do(ctx context.Context, transport
 }
 
 // WithContext sets the request context.
+//
 func (f ClusterExistsComponentTemplate) WithContext(v context.Context) func(*ClusterExistsComponentTemplateRequest) {
 	return func(r *ClusterExistsComponentTemplateRequest) {
 		r.ctx = v
@@ -154,6 +145,7 @@ func (f ClusterExistsComponentTemplate) WithContext(v context.Context) func(*Clu
 }
 
 // WithLocal - return local information, do not retrieve the state from master node (default: false).
+//
 func (f ClusterExistsComponentTemplate) WithLocal(v bool) func(*ClusterExistsComponentTemplateRequest) {
 	return func(r *ClusterExistsComponentTemplateRequest) {
 		r.Local = &v
@@ -161,6 +153,7 @@ func (f ClusterExistsComponentTemplate) WithLocal(v bool) func(*ClusterExistsCom
 }
 
 // WithMasterTimeout - explicit operation timeout for connection to master node.
+//
 func (f ClusterExistsComponentTemplate) WithMasterTimeout(v time.Duration) func(*ClusterExistsComponentTemplateRequest) {
 	return func(r *ClusterExistsComponentTemplateRequest) {
 		r.MasterTimeout = v
@@ -168,6 +161,7 @@ func (f ClusterExistsComponentTemplate) WithMasterTimeout(v time.Duration) func(
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f ClusterExistsComponentTemplate) WithPretty() func(*ClusterExistsComponentTemplateRequest) {
 	return func(r *ClusterExistsComponentTemplateRequest) {
 		r.Pretty = true
@@ -175,6 +169,7 @@ func (f ClusterExistsComponentTemplate) WithPretty() func(*ClusterExistsComponen
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f ClusterExistsComponentTemplate) WithHuman() func(*ClusterExistsComponentTemplateRequest) {
 	return func(r *ClusterExistsComponentTemplateRequest) {
 		r.Human = true
@@ -182,6 +177,7 @@ func (f ClusterExistsComponentTemplate) WithHuman() func(*ClusterExistsComponent
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f ClusterExistsComponentTemplate) WithErrorTrace() func(*ClusterExistsComponentTemplateRequest) {
 	return func(r *ClusterExistsComponentTemplateRequest) {
 		r.ErrorTrace = true
@@ -189,6 +185,7 @@ func (f ClusterExistsComponentTemplate) WithErrorTrace() func(*ClusterExistsComp
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f ClusterExistsComponentTemplate) WithFilterPath(v ...string) func(*ClusterExistsComponentTemplateRequest) {
 	return func(r *ClusterExistsComponentTemplateRequest) {
 		r.FilterPath = v
@@ -196,6 +193,7 @@ func (f ClusterExistsComponentTemplate) WithFilterPath(v ...string) func(*Cluste
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f ClusterExistsComponentTemplate) WithHeader(h map[string]string) func(*ClusterExistsComponentTemplateRequest) {
 	return func(r *ClusterExistsComponentTemplateRequest) {
 		if r.Header == nil {
@@ -208,6 +206,7 @@ func (f ClusterExistsComponentTemplate) WithHeader(h map[string]string) func(*Cl
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f ClusterExistsComponentTemplate) WithOpaqueID(s string) func(*ClusterExistsComponentTemplateRequest) {
 	return func(r *ClusterExistsComponentTemplateRequest) {
 		if r.Header == nil {

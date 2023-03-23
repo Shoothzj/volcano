@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -41,9 +28,11 @@ func newCatFielddataFunc(t Transport) CatFielddata {
 // CatFielddata shows how much heap memory is currently being used by fielddata on every data node in the cluster.
 //
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-fielddata.html.
+//
 type CatFielddata func(o ...func(*CatFielddataRequest)) (*Response, error)
 
 // CatFielddataRequest configures the Cat Fielddata API request.
+//
 type CatFielddataRequest struct {
 	Fields []string
 
@@ -65,6 +54,7 @@ type CatFielddataRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r CatFielddataRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -174,6 +164,7 @@ func (r CatFielddataRequest) Do(ctx context.Context, transport Transport) (*Resp
 }
 
 // WithContext sets the request context.
+//
 func (f CatFielddata) WithContext(v context.Context) func(*CatFielddataRequest) {
 	return func(r *CatFielddataRequest) {
 		r.ctx = v
@@ -181,6 +172,7 @@ func (f CatFielddata) WithContext(v context.Context) func(*CatFielddataRequest) 
 }
 
 // WithFields - a list of fields to return the fielddata size.
+//
 func (f CatFielddata) WithFields(v ...string) func(*CatFielddataRequest) {
 	return func(r *CatFielddataRequest) {
 		r.Fields = v
@@ -188,6 +180,7 @@ func (f CatFielddata) WithFields(v ...string) func(*CatFielddataRequest) {
 }
 
 // WithBytes - the unit in which to display byte values.
+//
 func (f CatFielddata) WithBytes(v string) func(*CatFielddataRequest) {
 	return func(r *CatFielddataRequest) {
 		r.Bytes = v
@@ -195,6 +188,7 @@ func (f CatFielddata) WithBytes(v string) func(*CatFielddataRequest) {
 }
 
 // WithFormat - a short version of the accept header, e.g. json, yaml.
+//
 func (f CatFielddata) WithFormat(v string) func(*CatFielddataRequest) {
 	return func(r *CatFielddataRequest) {
 		r.Format = v
@@ -202,6 +196,7 @@ func (f CatFielddata) WithFormat(v string) func(*CatFielddataRequest) {
 }
 
 // WithH - comma-separated list of column names to display.
+//
 func (f CatFielddata) WithH(v ...string) func(*CatFielddataRequest) {
 	return func(r *CatFielddataRequest) {
 		r.H = v
@@ -209,6 +204,7 @@ func (f CatFielddata) WithH(v ...string) func(*CatFielddataRequest) {
 }
 
 // WithHelp - return help information.
+//
 func (f CatFielddata) WithHelp(v bool) func(*CatFielddataRequest) {
 	return func(r *CatFielddataRequest) {
 		r.Help = &v
@@ -216,6 +212,7 @@ func (f CatFielddata) WithHelp(v bool) func(*CatFielddataRequest) {
 }
 
 // WithS - comma-separated list of column names or column aliases to sort by.
+//
 func (f CatFielddata) WithS(v ...string) func(*CatFielddataRequest) {
 	return func(r *CatFielddataRequest) {
 		r.S = v
@@ -223,6 +220,7 @@ func (f CatFielddata) WithS(v ...string) func(*CatFielddataRequest) {
 }
 
 // WithV - verbose mode. display column headers.
+//
 func (f CatFielddata) WithV(v bool) func(*CatFielddataRequest) {
 	return func(r *CatFielddataRequest) {
 		r.V = &v
@@ -230,6 +228,7 @@ func (f CatFielddata) WithV(v bool) func(*CatFielddataRequest) {
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f CatFielddata) WithPretty() func(*CatFielddataRequest) {
 	return func(r *CatFielddataRequest) {
 		r.Pretty = true
@@ -237,6 +236,7 @@ func (f CatFielddata) WithPretty() func(*CatFielddataRequest) {
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f CatFielddata) WithHuman() func(*CatFielddataRequest) {
 	return func(r *CatFielddataRequest) {
 		r.Human = true
@@ -244,6 +244,7 @@ func (f CatFielddata) WithHuman() func(*CatFielddataRequest) {
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f CatFielddata) WithErrorTrace() func(*CatFielddataRequest) {
 	return func(r *CatFielddataRequest) {
 		r.ErrorTrace = true
@@ -251,6 +252,7 @@ func (f CatFielddata) WithErrorTrace() func(*CatFielddataRequest) {
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f CatFielddata) WithFilterPath(v ...string) func(*CatFielddataRequest) {
 	return func(r *CatFielddataRequest) {
 		r.FilterPath = v
@@ -258,6 +260,7 @@ func (f CatFielddata) WithFilterPath(v ...string) func(*CatFielddataRequest) {
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f CatFielddata) WithHeader(h map[string]string) func(*CatFielddataRequest) {
 	return func(r *CatFielddataRequest) {
 		if r.Header == nil {
@@ -270,6 +273,7 @@ func (f CatFielddata) WithHeader(h map[string]string) func(*CatFielddataRequest)
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f CatFielddata) WithOpaqueID(s string) func(*CatFielddataRequest) {
 	return func(r *CatFielddataRequest) {
 		if r.Header == nil {

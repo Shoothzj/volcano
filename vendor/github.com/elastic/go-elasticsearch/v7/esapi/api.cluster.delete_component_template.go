@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -41,9 +28,11 @@ func newClusterDeleteComponentTemplateFunc(t Transport) ClusterDeleteComponentTe
 // ClusterDeleteComponentTemplate deletes a component template
 //
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-component-template.html.
+//
 type ClusterDeleteComponentTemplate func(name string, o ...func(*ClusterDeleteComponentTemplateRequest)) (*Response, error)
 
 // ClusterDeleteComponentTemplateRequest configures the Cluster Delete Component Template API request.
+//
 type ClusterDeleteComponentTemplateRequest struct {
 	Name string
 
@@ -61,6 +50,7 @@ type ClusterDeleteComponentTemplateRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r ClusterDeleteComponentTemplateRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -146,6 +136,7 @@ func (r ClusterDeleteComponentTemplateRequest) Do(ctx context.Context, transport
 }
 
 // WithContext sets the request context.
+//
 func (f ClusterDeleteComponentTemplate) WithContext(v context.Context) func(*ClusterDeleteComponentTemplateRequest) {
 	return func(r *ClusterDeleteComponentTemplateRequest) {
 		r.ctx = v
@@ -153,6 +144,7 @@ func (f ClusterDeleteComponentTemplate) WithContext(v context.Context) func(*Clu
 }
 
 // WithMasterTimeout - specify timeout for connection to master.
+//
 func (f ClusterDeleteComponentTemplate) WithMasterTimeout(v time.Duration) func(*ClusterDeleteComponentTemplateRequest) {
 	return func(r *ClusterDeleteComponentTemplateRequest) {
 		r.MasterTimeout = v
@@ -160,6 +152,7 @@ func (f ClusterDeleteComponentTemplate) WithMasterTimeout(v time.Duration) func(
 }
 
 // WithTimeout - explicit operation timeout.
+//
 func (f ClusterDeleteComponentTemplate) WithTimeout(v time.Duration) func(*ClusterDeleteComponentTemplateRequest) {
 	return func(r *ClusterDeleteComponentTemplateRequest) {
 		r.Timeout = v
@@ -167,6 +160,7 @@ func (f ClusterDeleteComponentTemplate) WithTimeout(v time.Duration) func(*Clust
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f ClusterDeleteComponentTemplate) WithPretty() func(*ClusterDeleteComponentTemplateRequest) {
 	return func(r *ClusterDeleteComponentTemplateRequest) {
 		r.Pretty = true
@@ -174,6 +168,7 @@ func (f ClusterDeleteComponentTemplate) WithPretty() func(*ClusterDeleteComponen
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f ClusterDeleteComponentTemplate) WithHuman() func(*ClusterDeleteComponentTemplateRequest) {
 	return func(r *ClusterDeleteComponentTemplateRequest) {
 		r.Human = true
@@ -181,6 +176,7 @@ func (f ClusterDeleteComponentTemplate) WithHuman() func(*ClusterDeleteComponent
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f ClusterDeleteComponentTemplate) WithErrorTrace() func(*ClusterDeleteComponentTemplateRequest) {
 	return func(r *ClusterDeleteComponentTemplateRequest) {
 		r.ErrorTrace = true
@@ -188,6 +184,7 @@ func (f ClusterDeleteComponentTemplate) WithErrorTrace() func(*ClusterDeleteComp
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f ClusterDeleteComponentTemplate) WithFilterPath(v ...string) func(*ClusterDeleteComponentTemplateRequest) {
 	return func(r *ClusterDeleteComponentTemplateRequest) {
 		r.FilterPath = v
@@ -195,6 +192,7 @@ func (f ClusterDeleteComponentTemplate) WithFilterPath(v ...string) func(*Cluste
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f ClusterDeleteComponentTemplate) WithHeader(h map[string]string) func(*ClusterDeleteComponentTemplateRequest) {
 	return func(r *ClusterDeleteComponentTemplateRequest) {
 		if r.Header == nil {
@@ -207,6 +205,7 @@ func (f ClusterDeleteComponentTemplate) WithHeader(h map[string]string) func(*Cl
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f ClusterDeleteComponentTemplate) WithOpaqueID(s string) func(*ClusterDeleteComponentTemplateRequest) {
 	return func(r *ClusterDeleteComponentTemplateRequest) {
 		if r.Header == nil {

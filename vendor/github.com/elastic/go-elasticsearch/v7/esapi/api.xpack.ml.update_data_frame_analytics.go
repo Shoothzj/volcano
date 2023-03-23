@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -40,10 +27,14 @@ func newMLUpdateDataFrameAnalyticsFunc(t Transport) MLUpdateDataFrameAnalytics {
 
 // MLUpdateDataFrameAnalytics - Updates certain properties of a data frame analytics job.
 //
+// This API is beta.
+//
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/current/update-dfanalytics.html.
+//
 type MLUpdateDataFrameAnalytics func(id string, body io.Reader, o ...func(*MLUpdateDataFrameAnalyticsRequest)) (*Response, error)
 
 // MLUpdateDataFrameAnalyticsRequest configures the ML Update Data Frame Analytics API request.
+//
 type MLUpdateDataFrameAnalyticsRequest struct {
 	DocumentID string
 
@@ -60,6 +51,7 @@ type MLUpdateDataFrameAnalyticsRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r MLUpdateDataFrameAnalyticsRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -112,6 +104,10 @@ func (r MLUpdateDataFrameAnalyticsRequest) Do(ctx context.Context, transport Tra
 		req.URL.RawQuery = q.Encode()
 	}
 
+	if r.Body != nil {
+		req.Header[headerContentType] = headerContentTypeJSON
+	}
+
 	if len(r.Header) > 0 {
 		if len(req.Header) == 0 {
 			req.Header = r.Header
@@ -122,10 +118,6 @@ func (r MLUpdateDataFrameAnalyticsRequest) Do(ctx context.Context, transport Tra
 				}
 			}
 		}
-	}
-
-	if r.Body != nil && req.Header.Get(headerContentType) == "" {
-		req.Header[headerContentType] = headerContentTypeJSON
 	}
 
 	if ctx != nil {
@@ -147,6 +139,7 @@ func (r MLUpdateDataFrameAnalyticsRequest) Do(ctx context.Context, transport Tra
 }
 
 // WithContext sets the request context.
+//
 func (f MLUpdateDataFrameAnalytics) WithContext(v context.Context) func(*MLUpdateDataFrameAnalyticsRequest) {
 	return func(r *MLUpdateDataFrameAnalyticsRequest) {
 		r.ctx = v
@@ -154,6 +147,7 @@ func (f MLUpdateDataFrameAnalytics) WithContext(v context.Context) func(*MLUpdat
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f MLUpdateDataFrameAnalytics) WithPretty() func(*MLUpdateDataFrameAnalyticsRequest) {
 	return func(r *MLUpdateDataFrameAnalyticsRequest) {
 		r.Pretty = true
@@ -161,6 +155,7 @@ func (f MLUpdateDataFrameAnalytics) WithPretty() func(*MLUpdateDataFrameAnalytic
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f MLUpdateDataFrameAnalytics) WithHuman() func(*MLUpdateDataFrameAnalyticsRequest) {
 	return func(r *MLUpdateDataFrameAnalyticsRequest) {
 		r.Human = true
@@ -168,6 +163,7 @@ func (f MLUpdateDataFrameAnalytics) WithHuman() func(*MLUpdateDataFrameAnalytics
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f MLUpdateDataFrameAnalytics) WithErrorTrace() func(*MLUpdateDataFrameAnalyticsRequest) {
 	return func(r *MLUpdateDataFrameAnalyticsRequest) {
 		r.ErrorTrace = true
@@ -175,6 +171,7 @@ func (f MLUpdateDataFrameAnalytics) WithErrorTrace() func(*MLUpdateDataFrameAnal
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f MLUpdateDataFrameAnalytics) WithFilterPath(v ...string) func(*MLUpdateDataFrameAnalyticsRequest) {
 	return func(r *MLUpdateDataFrameAnalyticsRequest) {
 		r.FilterPath = v
@@ -182,6 +179,7 @@ func (f MLUpdateDataFrameAnalytics) WithFilterPath(v ...string) func(*MLUpdateDa
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f MLUpdateDataFrameAnalytics) WithHeader(h map[string]string) func(*MLUpdateDataFrameAnalyticsRequest) {
 	return func(r *MLUpdateDataFrameAnalyticsRequest) {
 		if r.Header == nil {
@@ -194,6 +192,7 @@ func (f MLUpdateDataFrameAnalytics) WithHeader(h map[string]string) func(*MLUpda
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f MLUpdateDataFrameAnalytics) WithOpaqueID(s string) func(*MLUpdateDataFrameAnalyticsRequest) {
 	return func(r *MLUpdateDataFrameAnalyticsRequest) {
 		if r.Header == nil {

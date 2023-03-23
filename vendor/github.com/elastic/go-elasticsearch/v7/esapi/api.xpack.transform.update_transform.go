@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -25,7 +12,6 @@ import (
 	"net/http"
 	"strconv"
 	"strings"
-	"time"
 )
 
 func newTransformUpdateTransformFunc(t Transport) TransformUpdateTransform {
@@ -43,16 +29,17 @@ func newTransformUpdateTransformFunc(t Transport) TransformUpdateTransform {
 // TransformUpdateTransform - Updates certain properties of a transform.
 //
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/current/update-transform.html.
+//
 type TransformUpdateTransform func(body io.Reader, transform_id string, o ...func(*TransformUpdateTransformRequest)) (*Response, error)
 
 // TransformUpdateTransformRequest configures the Transform Update Transform API request.
+//
 type TransformUpdateTransformRequest struct {
 	Body io.Reader
 
 	TransformID string
 
 	DeferValidation *bool
-	Timeout         time.Duration
 
 	Pretty     bool
 	Human      bool
@@ -65,6 +52,7 @@ type TransformUpdateTransformRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r TransformUpdateTransformRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -86,10 +74,6 @@ func (r TransformUpdateTransformRequest) Do(ctx context.Context, transport Trans
 
 	if r.DeferValidation != nil {
 		params["defer_validation"] = strconv.FormatBool(*r.DeferValidation)
-	}
-
-	if r.Timeout != 0 {
-		params["timeout"] = formatDuration(r.Timeout)
 	}
 
 	if r.Pretty {
@@ -121,6 +105,10 @@ func (r TransformUpdateTransformRequest) Do(ctx context.Context, transport Trans
 		req.URL.RawQuery = q.Encode()
 	}
 
+	if r.Body != nil {
+		req.Header[headerContentType] = headerContentTypeJSON
+	}
+
 	if len(r.Header) > 0 {
 		if len(req.Header) == 0 {
 			req.Header = r.Header
@@ -131,10 +119,6 @@ func (r TransformUpdateTransformRequest) Do(ctx context.Context, transport Trans
 				}
 			}
 		}
-	}
-
-	if r.Body != nil && req.Header.Get(headerContentType) == "" {
-		req.Header[headerContentType] = headerContentTypeJSON
 	}
 
 	if ctx != nil {
@@ -156,6 +140,7 @@ func (r TransformUpdateTransformRequest) Do(ctx context.Context, transport Trans
 }
 
 // WithContext sets the request context.
+//
 func (f TransformUpdateTransform) WithContext(v context.Context) func(*TransformUpdateTransformRequest) {
 	return func(r *TransformUpdateTransformRequest) {
 		r.ctx = v
@@ -163,20 +148,15 @@ func (f TransformUpdateTransform) WithContext(v context.Context) func(*Transform
 }
 
 // WithDeferValidation - if validations should be deferred until transform starts, defaults to false..
+//
 func (f TransformUpdateTransform) WithDeferValidation(v bool) func(*TransformUpdateTransformRequest) {
 	return func(r *TransformUpdateTransformRequest) {
 		r.DeferValidation = &v
 	}
 }
 
-// WithTimeout - controls the time to wait for the update.
-func (f TransformUpdateTransform) WithTimeout(v time.Duration) func(*TransformUpdateTransformRequest) {
-	return func(r *TransformUpdateTransformRequest) {
-		r.Timeout = v
-	}
-}
-
 // WithPretty makes the response body pretty-printed.
+//
 func (f TransformUpdateTransform) WithPretty() func(*TransformUpdateTransformRequest) {
 	return func(r *TransformUpdateTransformRequest) {
 		r.Pretty = true
@@ -184,6 +164,7 @@ func (f TransformUpdateTransform) WithPretty() func(*TransformUpdateTransformReq
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f TransformUpdateTransform) WithHuman() func(*TransformUpdateTransformRequest) {
 	return func(r *TransformUpdateTransformRequest) {
 		r.Human = true
@@ -191,6 +172,7 @@ func (f TransformUpdateTransform) WithHuman() func(*TransformUpdateTransformRequ
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f TransformUpdateTransform) WithErrorTrace() func(*TransformUpdateTransformRequest) {
 	return func(r *TransformUpdateTransformRequest) {
 		r.ErrorTrace = true
@@ -198,6 +180,7 @@ func (f TransformUpdateTransform) WithErrorTrace() func(*TransformUpdateTransfor
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f TransformUpdateTransform) WithFilterPath(v ...string) func(*TransformUpdateTransformRequest) {
 	return func(r *TransformUpdateTransformRequest) {
 		r.FilterPath = v
@@ -205,6 +188,7 @@ func (f TransformUpdateTransform) WithFilterPath(v ...string) func(*TransformUpd
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f TransformUpdateTransform) WithHeader(h map[string]string) func(*TransformUpdateTransformRequest) {
 	return func(r *TransformUpdateTransformRequest) {
 		if r.Header == nil {
@@ -217,6 +201,7 @@ func (f TransformUpdateTransform) WithHeader(h map[string]string) func(*Transfor
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f TransformUpdateTransform) WithOpaqueID(s string) func(*TransformUpdateTransformRequest) {
 	return func(r *TransformUpdateTransformRequest) {
 		if r.Header == nil {

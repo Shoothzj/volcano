@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -42,18 +29,19 @@ func newCatPluginsFunc(t Transport) CatPlugins {
 // CatPlugins returns information about installed plugins across nodes node.
 //
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/master/cat-plugins.html.
+//
 type CatPlugins func(o ...func(*CatPluginsRequest)) (*Response, error)
 
 // CatPluginsRequest configures the Cat Plugins API request.
+//
 type CatPluginsRequest struct {
-	Format           string
-	H                []string
-	Help             *bool
-	IncludeBootstrap *bool
-	Local            *bool
-	MasterTimeout    time.Duration
-	S                []string
-	V                *bool
+	Format        string
+	H             []string
+	Help          *bool
+	Local         *bool
+	MasterTimeout time.Duration
+	S             []string
+	V             *bool
 
 	Pretty     bool
 	Human      bool
@@ -66,6 +54,7 @@ type CatPluginsRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r CatPluginsRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -90,10 +79,6 @@ func (r CatPluginsRequest) Do(ctx context.Context, transport Transport) (*Respon
 
 	if r.Help != nil {
 		params["help"] = strconv.FormatBool(*r.Help)
-	}
-
-	if r.IncludeBootstrap != nil {
-		params["include_bootstrap"] = strconv.FormatBool(*r.IncludeBootstrap)
 	}
 
 	if r.Local != nil {
@@ -172,6 +157,7 @@ func (r CatPluginsRequest) Do(ctx context.Context, transport Transport) (*Respon
 }
 
 // WithContext sets the request context.
+//
 func (f CatPlugins) WithContext(v context.Context) func(*CatPluginsRequest) {
 	return func(r *CatPluginsRequest) {
 		r.ctx = v
@@ -179,6 +165,7 @@ func (f CatPlugins) WithContext(v context.Context) func(*CatPluginsRequest) {
 }
 
 // WithFormat - a short version of the accept header, e.g. json, yaml.
+//
 func (f CatPlugins) WithFormat(v string) func(*CatPluginsRequest) {
 	return func(r *CatPluginsRequest) {
 		r.Format = v
@@ -186,6 +173,7 @@ func (f CatPlugins) WithFormat(v string) func(*CatPluginsRequest) {
 }
 
 // WithH - comma-separated list of column names to display.
+//
 func (f CatPlugins) WithH(v ...string) func(*CatPluginsRequest) {
 	return func(r *CatPluginsRequest) {
 		r.H = v
@@ -193,20 +181,15 @@ func (f CatPlugins) WithH(v ...string) func(*CatPluginsRequest) {
 }
 
 // WithHelp - return help information.
+//
 func (f CatPlugins) WithHelp(v bool) func(*CatPluginsRequest) {
 	return func(r *CatPluginsRequest) {
 		r.Help = &v
 	}
 }
 
-// WithIncludeBootstrap - include bootstrap plugins in the response.
-func (f CatPlugins) WithIncludeBootstrap(v bool) func(*CatPluginsRequest) {
-	return func(r *CatPluginsRequest) {
-		r.IncludeBootstrap = &v
-	}
-}
-
 // WithLocal - return local information, do not retrieve the state from master node (default: false).
+//
 func (f CatPlugins) WithLocal(v bool) func(*CatPluginsRequest) {
 	return func(r *CatPluginsRequest) {
 		r.Local = &v
@@ -214,6 +197,7 @@ func (f CatPlugins) WithLocal(v bool) func(*CatPluginsRequest) {
 }
 
 // WithMasterTimeout - explicit operation timeout for connection to master node.
+//
 func (f CatPlugins) WithMasterTimeout(v time.Duration) func(*CatPluginsRequest) {
 	return func(r *CatPluginsRequest) {
 		r.MasterTimeout = v
@@ -221,6 +205,7 @@ func (f CatPlugins) WithMasterTimeout(v time.Duration) func(*CatPluginsRequest) 
 }
 
 // WithS - comma-separated list of column names or column aliases to sort by.
+//
 func (f CatPlugins) WithS(v ...string) func(*CatPluginsRequest) {
 	return func(r *CatPluginsRequest) {
 		r.S = v
@@ -228,6 +213,7 @@ func (f CatPlugins) WithS(v ...string) func(*CatPluginsRequest) {
 }
 
 // WithV - verbose mode. display column headers.
+//
 func (f CatPlugins) WithV(v bool) func(*CatPluginsRequest) {
 	return func(r *CatPluginsRequest) {
 		r.V = &v
@@ -235,6 +221,7 @@ func (f CatPlugins) WithV(v bool) func(*CatPluginsRequest) {
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f CatPlugins) WithPretty() func(*CatPluginsRequest) {
 	return func(r *CatPluginsRequest) {
 		r.Pretty = true
@@ -242,6 +229,7 @@ func (f CatPlugins) WithPretty() func(*CatPluginsRequest) {
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f CatPlugins) WithHuman() func(*CatPluginsRequest) {
 	return func(r *CatPluginsRequest) {
 		r.Human = true
@@ -249,6 +237,7 @@ func (f CatPlugins) WithHuman() func(*CatPluginsRequest) {
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f CatPlugins) WithErrorTrace() func(*CatPluginsRequest) {
 	return func(r *CatPluginsRequest) {
 		r.ErrorTrace = true
@@ -256,6 +245,7 @@ func (f CatPlugins) WithErrorTrace() func(*CatPluginsRequest) {
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f CatPlugins) WithFilterPath(v ...string) func(*CatPluginsRequest) {
 	return func(r *CatPluginsRequest) {
 		r.FilterPath = v
@@ -263,6 +253,7 @@ func (f CatPlugins) WithFilterPath(v ...string) func(*CatPluginsRequest) {
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f CatPlugins) WithHeader(h map[string]string) func(*CatPluginsRequest) {
 	return func(r *CatPluginsRequest) {
 		if r.Header == nil {
@@ -275,6 +266,7 @@ func (f CatPlugins) WithHeader(h map[string]string) func(*CatPluginsRequest) {
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f CatPlugins) WithOpaqueID(s string) func(*CatPluginsRequest) {
 	return func(r *CatPluginsRequest) {
 		if r.Header == nil {

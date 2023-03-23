@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -41,9 +28,11 @@ func newClusterPostVotingConfigExclusionsFunc(t Transport) ClusterPostVotingConf
 // ClusterPostVotingConfigExclusions updates the cluster voting config exclusions by node ids or node names.
 //
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/master/voting-config-exclusions.html.
+//
 type ClusterPostVotingConfigExclusions func(o ...func(*ClusterPostVotingConfigExclusionsRequest)) (*Response, error)
 
 // ClusterPostVotingConfigExclusionsRequest configures the Cluster Post Voting Config Exclusions API request.
+//
 type ClusterPostVotingConfigExclusionsRequest struct {
 	NodeIds   string
 	NodeNames string
@@ -60,6 +49,7 @@ type ClusterPostVotingConfigExclusionsRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r ClusterPostVotingConfigExclusionsRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -146,6 +136,7 @@ func (r ClusterPostVotingConfigExclusionsRequest) Do(ctx context.Context, transp
 }
 
 // WithContext sets the request context.
+//
 func (f ClusterPostVotingConfigExclusions) WithContext(v context.Context) func(*ClusterPostVotingConfigExclusionsRequest) {
 	return func(r *ClusterPostVotingConfigExclusionsRequest) {
 		r.ctx = v
@@ -153,6 +144,7 @@ func (f ClusterPostVotingConfigExclusions) WithContext(v context.Context) func(*
 }
 
 // WithNodeIds - a list of the persistent ids of the nodes to exclude from the voting configuration. if specified, you may not also specify ?node_names..
+//
 func (f ClusterPostVotingConfigExclusions) WithNodeIds(v string) func(*ClusterPostVotingConfigExclusionsRequest) {
 	return func(r *ClusterPostVotingConfigExclusionsRequest) {
 		r.NodeIds = v
@@ -160,6 +152,7 @@ func (f ClusterPostVotingConfigExclusions) WithNodeIds(v string) func(*ClusterPo
 }
 
 // WithNodeNames - a list of the names of the nodes to exclude from the voting configuration. if specified, you may not also specify ?node_ids..
+//
 func (f ClusterPostVotingConfigExclusions) WithNodeNames(v string) func(*ClusterPostVotingConfigExclusionsRequest) {
 	return func(r *ClusterPostVotingConfigExclusionsRequest) {
 		r.NodeNames = v
@@ -167,6 +160,7 @@ func (f ClusterPostVotingConfigExclusions) WithNodeNames(v string) func(*Cluster
 }
 
 // WithTimeout - explicit operation timeout.
+//
 func (f ClusterPostVotingConfigExclusions) WithTimeout(v time.Duration) func(*ClusterPostVotingConfigExclusionsRequest) {
 	return func(r *ClusterPostVotingConfigExclusionsRequest) {
 		r.Timeout = v
@@ -174,6 +168,7 @@ func (f ClusterPostVotingConfigExclusions) WithTimeout(v time.Duration) func(*Cl
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f ClusterPostVotingConfigExclusions) WithPretty() func(*ClusterPostVotingConfigExclusionsRequest) {
 	return func(r *ClusterPostVotingConfigExclusionsRequest) {
 		r.Pretty = true
@@ -181,6 +176,7 @@ func (f ClusterPostVotingConfigExclusions) WithPretty() func(*ClusterPostVotingC
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f ClusterPostVotingConfigExclusions) WithHuman() func(*ClusterPostVotingConfigExclusionsRequest) {
 	return func(r *ClusterPostVotingConfigExclusionsRequest) {
 		r.Human = true
@@ -188,6 +184,7 @@ func (f ClusterPostVotingConfigExclusions) WithHuman() func(*ClusterPostVotingCo
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f ClusterPostVotingConfigExclusions) WithErrorTrace() func(*ClusterPostVotingConfigExclusionsRequest) {
 	return func(r *ClusterPostVotingConfigExclusionsRequest) {
 		r.ErrorTrace = true
@@ -195,6 +192,7 @@ func (f ClusterPostVotingConfigExclusions) WithErrorTrace() func(*ClusterPostVot
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f ClusterPostVotingConfigExclusions) WithFilterPath(v ...string) func(*ClusterPostVotingConfigExclusionsRequest) {
 	return func(r *ClusterPostVotingConfigExclusionsRequest) {
 		r.FilterPath = v
@@ -202,6 +200,7 @@ func (f ClusterPostVotingConfigExclusions) WithFilterPath(v ...string) func(*Clu
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f ClusterPostVotingConfigExclusions) WithHeader(h map[string]string) func(*ClusterPostVotingConfigExclusionsRequest) {
 	return func(r *ClusterPostVotingConfigExclusionsRequest) {
 		if r.Header == nil {
@@ -214,6 +213,7 @@ func (f ClusterPostVotingConfigExclusions) WithHeader(h map[string]string) func(
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f ClusterPostVotingConfigExclusions) WithOpaqueID(s string) func(*ClusterPostVotingConfigExclusionsRequest) {
 	return func(r *ClusterPostVotingConfigExclusionsRequest) {
 		if r.Header == nil {

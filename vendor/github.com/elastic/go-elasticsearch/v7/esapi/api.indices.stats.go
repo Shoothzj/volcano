@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -41,9 +28,11 @@ func newIndicesStatsFunc(t Transport) IndicesStats {
 // IndicesStats provides statistics on operations happening in an index.
 //
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-stats.html.
+//
 type IndicesStats func(o ...func(*IndicesStatsRequest)) (*Response, error)
 
 // IndicesStatsRequest configures the Indices Stats API request.
+//
 type IndicesStatsRequest struct {
 	Index []string
 
@@ -71,6 +60,7 @@ type IndicesStatsRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r IndicesStatsRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -194,6 +184,7 @@ func (r IndicesStatsRequest) Do(ctx context.Context, transport Transport) (*Resp
 }
 
 // WithContext sets the request context.
+//
 func (f IndicesStats) WithContext(v context.Context) func(*IndicesStatsRequest) {
 	return func(r *IndicesStatsRequest) {
 		r.ctx = v
@@ -201,6 +192,7 @@ func (f IndicesStats) WithContext(v context.Context) func(*IndicesStatsRequest) 
 }
 
 // WithIndex - a list of index names; use _all to perform the operation on all indices.
+//
 func (f IndicesStats) WithIndex(v ...string) func(*IndicesStatsRequest) {
 	return func(r *IndicesStatsRequest) {
 		r.Index = v
@@ -208,6 +200,7 @@ func (f IndicesStats) WithIndex(v ...string) func(*IndicesStatsRequest) {
 }
 
 // WithMetric - limit the information returned the specific metrics..
+//
 func (f IndicesStats) WithMetric(v ...string) func(*IndicesStatsRequest) {
 	return func(r *IndicesStatsRequest) {
 		r.Metric = v
@@ -215,6 +208,7 @@ func (f IndicesStats) WithMetric(v ...string) func(*IndicesStatsRequest) {
 }
 
 // WithCompletionFields - a list of fields for `fielddata` and `suggest` index metric (supports wildcards).
+//
 func (f IndicesStats) WithCompletionFields(v ...string) func(*IndicesStatsRequest) {
 	return func(r *IndicesStatsRequest) {
 		r.CompletionFields = v
@@ -222,6 +216,7 @@ func (f IndicesStats) WithCompletionFields(v ...string) func(*IndicesStatsReques
 }
 
 // WithExpandWildcards - whether to expand wildcard expression to concrete indices that are open, closed or both..
+//
 func (f IndicesStats) WithExpandWildcards(v string) func(*IndicesStatsRequest) {
 	return func(r *IndicesStatsRequest) {
 		r.ExpandWildcards = v
@@ -229,6 +224,7 @@ func (f IndicesStats) WithExpandWildcards(v string) func(*IndicesStatsRequest) {
 }
 
 // WithFielddataFields - a list of fields for `fielddata` index metric (supports wildcards).
+//
 func (f IndicesStats) WithFielddataFields(v ...string) func(*IndicesStatsRequest) {
 	return func(r *IndicesStatsRequest) {
 		r.FielddataFields = v
@@ -236,6 +232,7 @@ func (f IndicesStats) WithFielddataFields(v ...string) func(*IndicesStatsRequest
 }
 
 // WithFields - a list of fields for `fielddata` and `completion` index metric (supports wildcards).
+//
 func (f IndicesStats) WithFields(v ...string) func(*IndicesStatsRequest) {
 	return func(r *IndicesStatsRequest) {
 		r.Fields = v
@@ -243,6 +240,7 @@ func (f IndicesStats) WithFields(v ...string) func(*IndicesStatsRequest) {
 }
 
 // WithForbidClosedIndices - if set to false stats will also collected from closed indices if explicitly specified or if expand_wildcards expands to closed indices.
+//
 func (f IndicesStats) WithForbidClosedIndices(v bool) func(*IndicesStatsRequest) {
 	return func(r *IndicesStatsRequest) {
 		r.ForbidClosedIndices = &v
@@ -250,6 +248,7 @@ func (f IndicesStats) WithForbidClosedIndices(v bool) func(*IndicesStatsRequest)
 }
 
 // WithGroups - a list of search groups for `search` index metric.
+//
 func (f IndicesStats) WithGroups(v ...string) func(*IndicesStatsRequest) {
 	return func(r *IndicesStatsRequest) {
 		r.Groups = v
@@ -257,6 +256,7 @@ func (f IndicesStats) WithGroups(v ...string) func(*IndicesStatsRequest) {
 }
 
 // WithIncludeSegmentFileSizes - whether to report the aggregated disk usage of each one of the lucene index files (only applies if segment stats are requested).
+//
 func (f IndicesStats) WithIncludeSegmentFileSizes(v bool) func(*IndicesStatsRequest) {
 	return func(r *IndicesStatsRequest) {
 		r.IncludeSegmentFileSizes = &v
@@ -264,6 +264,7 @@ func (f IndicesStats) WithIncludeSegmentFileSizes(v bool) func(*IndicesStatsRequ
 }
 
 // WithIncludeUnloadedSegments - if set to true segment stats will include stats for segments that are not currently loaded into memory.
+//
 func (f IndicesStats) WithIncludeUnloadedSegments(v bool) func(*IndicesStatsRequest) {
 	return func(r *IndicesStatsRequest) {
 		r.IncludeUnloadedSegments = &v
@@ -271,6 +272,7 @@ func (f IndicesStats) WithIncludeUnloadedSegments(v bool) func(*IndicesStatsRequ
 }
 
 // WithLevel - return stats aggregated at cluster, index or shard level.
+//
 func (f IndicesStats) WithLevel(v string) func(*IndicesStatsRequest) {
 	return func(r *IndicesStatsRequest) {
 		r.Level = v
@@ -278,6 +280,7 @@ func (f IndicesStats) WithLevel(v string) func(*IndicesStatsRequest) {
 }
 
 // WithTypes - a list of document types for the `indexing` index metric.
+//
 func (f IndicesStats) WithTypes(v ...string) func(*IndicesStatsRequest) {
 	return func(r *IndicesStatsRequest) {
 		r.Types = v
@@ -285,6 +288,7 @@ func (f IndicesStats) WithTypes(v ...string) func(*IndicesStatsRequest) {
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f IndicesStats) WithPretty() func(*IndicesStatsRequest) {
 	return func(r *IndicesStatsRequest) {
 		r.Pretty = true
@@ -292,6 +296,7 @@ func (f IndicesStats) WithPretty() func(*IndicesStatsRequest) {
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f IndicesStats) WithHuman() func(*IndicesStatsRequest) {
 	return func(r *IndicesStatsRequest) {
 		r.Human = true
@@ -299,6 +304,7 @@ func (f IndicesStats) WithHuman() func(*IndicesStatsRequest) {
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f IndicesStats) WithErrorTrace() func(*IndicesStatsRequest) {
 	return func(r *IndicesStatsRequest) {
 		r.ErrorTrace = true
@@ -306,6 +312,7 @@ func (f IndicesStats) WithErrorTrace() func(*IndicesStatsRequest) {
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f IndicesStats) WithFilterPath(v ...string) func(*IndicesStatsRequest) {
 	return func(r *IndicesStatsRequest) {
 		r.FilterPath = v
@@ -313,6 +320,7 @@ func (f IndicesStats) WithFilterPath(v ...string) func(*IndicesStatsRequest) {
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f IndicesStats) WithHeader(h map[string]string) func(*IndicesStatsRequest) {
 	return func(r *IndicesStatsRequest) {
 		if r.Header == nil {
@@ -325,6 +333,7 @@ func (f IndicesStats) WithHeader(h map[string]string) func(*IndicesStatsRequest)
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f IndicesStats) WithOpaqueID(s string) func(*IndicesStatsRequest) {
 	return func(r *IndicesStatsRequest) {
 		if r.Header == nil {

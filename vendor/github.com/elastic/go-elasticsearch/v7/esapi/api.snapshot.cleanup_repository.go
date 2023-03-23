@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -41,9 +28,11 @@ func newSnapshotCleanupRepositoryFunc(t Transport) SnapshotCleanupRepository {
 // SnapshotCleanupRepository removes stale data from repository.
 //
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/master/clean-up-snapshot-repo-api.html.
+//
 type SnapshotCleanupRepository func(repository string, o ...func(*SnapshotCleanupRepositoryRequest)) (*Response, error)
 
 // SnapshotCleanupRepositoryRequest configures the Snapshot Cleanup Repository API request.
+//
 type SnapshotCleanupRepositoryRequest struct {
 	Repository string
 
@@ -61,6 +50,7 @@ type SnapshotCleanupRepositoryRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r SnapshotCleanupRepositoryRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -148,6 +138,7 @@ func (r SnapshotCleanupRepositoryRequest) Do(ctx context.Context, transport Tran
 }
 
 // WithContext sets the request context.
+//
 func (f SnapshotCleanupRepository) WithContext(v context.Context) func(*SnapshotCleanupRepositoryRequest) {
 	return func(r *SnapshotCleanupRepositoryRequest) {
 		r.ctx = v
@@ -155,6 +146,7 @@ func (f SnapshotCleanupRepository) WithContext(v context.Context) func(*Snapshot
 }
 
 // WithMasterTimeout - explicit operation timeout for connection to master node.
+//
 func (f SnapshotCleanupRepository) WithMasterTimeout(v time.Duration) func(*SnapshotCleanupRepositoryRequest) {
 	return func(r *SnapshotCleanupRepositoryRequest) {
 		r.MasterTimeout = v
@@ -162,6 +154,7 @@ func (f SnapshotCleanupRepository) WithMasterTimeout(v time.Duration) func(*Snap
 }
 
 // WithTimeout - explicit operation timeout.
+//
 func (f SnapshotCleanupRepository) WithTimeout(v time.Duration) func(*SnapshotCleanupRepositoryRequest) {
 	return func(r *SnapshotCleanupRepositoryRequest) {
 		r.Timeout = v
@@ -169,6 +162,7 @@ func (f SnapshotCleanupRepository) WithTimeout(v time.Duration) func(*SnapshotCl
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f SnapshotCleanupRepository) WithPretty() func(*SnapshotCleanupRepositoryRequest) {
 	return func(r *SnapshotCleanupRepositoryRequest) {
 		r.Pretty = true
@@ -176,6 +170,7 @@ func (f SnapshotCleanupRepository) WithPretty() func(*SnapshotCleanupRepositoryR
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f SnapshotCleanupRepository) WithHuman() func(*SnapshotCleanupRepositoryRequest) {
 	return func(r *SnapshotCleanupRepositoryRequest) {
 		r.Human = true
@@ -183,6 +178,7 @@ func (f SnapshotCleanupRepository) WithHuman() func(*SnapshotCleanupRepositoryRe
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f SnapshotCleanupRepository) WithErrorTrace() func(*SnapshotCleanupRepositoryRequest) {
 	return func(r *SnapshotCleanupRepositoryRequest) {
 		r.ErrorTrace = true
@@ -190,6 +186,7 @@ func (f SnapshotCleanupRepository) WithErrorTrace() func(*SnapshotCleanupReposit
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f SnapshotCleanupRepository) WithFilterPath(v ...string) func(*SnapshotCleanupRepositoryRequest) {
 	return func(r *SnapshotCleanupRepositoryRequest) {
 		r.FilterPath = v
@@ -197,6 +194,7 @@ func (f SnapshotCleanupRepository) WithFilterPath(v ...string) func(*SnapshotCle
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f SnapshotCleanupRepository) WithHeader(h map[string]string) func(*SnapshotCleanupRepositoryRequest) {
 	return func(r *SnapshotCleanupRepositoryRequest) {
 		if r.Header == nil {
@@ -209,6 +207,7 @@ func (f SnapshotCleanupRepository) WithHeader(h map[string]string) func(*Snapsho
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f SnapshotCleanupRepository) WithOpaqueID(s string) func(*SnapshotCleanupRepositoryRequest) {
 	return func(r *SnapshotCleanupRepositoryRequest) {
 		if r.Header == nil {

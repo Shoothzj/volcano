@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -43,9 +30,11 @@ func newDataFrameTransformDeprecatedStartTransformFunc(t Transport) DataFrameTra
 // This API is beta.
 //
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/current/start-transform.html.
+//
 type DataFrameTransformDeprecatedStartTransform func(transform_id string, o ...func(*DataFrameTransformDeprecatedStartTransformRequest)) (*Response, error)
 
 // DataFrameTransformDeprecatedStartTransformRequest configures the Data Frame Transform Deprecated Start Transform API request.
+//
 type DataFrameTransformDeprecatedStartTransformRequest struct {
 	TransformID string
 
@@ -62,6 +51,7 @@ type DataFrameTransformDeprecatedStartTransformRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r DataFrameTransformDeprecatedStartTransformRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -147,6 +137,7 @@ func (r DataFrameTransformDeprecatedStartTransformRequest) Do(ctx context.Contex
 }
 
 // WithContext sets the request context.
+//
 func (f DataFrameTransformDeprecatedStartTransform) WithContext(v context.Context) func(*DataFrameTransformDeprecatedStartTransformRequest) {
 	return func(r *DataFrameTransformDeprecatedStartTransformRequest) {
 		r.ctx = v
@@ -154,6 +145,7 @@ func (f DataFrameTransformDeprecatedStartTransform) WithContext(v context.Contex
 }
 
 // WithTimeout - controls the time to wait for the transform to start.
+//
 func (f DataFrameTransformDeprecatedStartTransform) WithTimeout(v time.Duration) func(*DataFrameTransformDeprecatedStartTransformRequest) {
 	return func(r *DataFrameTransformDeprecatedStartTransformRequest) {
 		r.Timeout = v
@@ -161,6 +153,7 @@ func (f DataFrameTransformDeprecatedStartTransform) WithTimeout(v time.Duration)
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f DataFrameTransformDeprecatedStartTransform) WithPretty() func(*DataFrameTransformDeprecatedStartTransformRequest) {
 	return func(r *DataFrameTransformDeprecatedStartTransformRequest) {
 		r.Pretty = true
@@ -168,6 +161,7 @@ func (f DataFrameTransformDeprecatedStartTransform) WithPretty() func(*DataFrame
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f DataFrameTransformDeprecatedStartTransform) WithHuman() func(*DataFrameTransformDeprecatedStartTransformRequest) {
 	return func(r *DataFrameTransformDeprecatedStartTransformRequest) {
 		r.Human = true
@@ -175,6 +169,7 @@ func (f DataFrameTransformDeprecatedStartTransform) WithHuman() func(*DataFrameT
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f DataFrameTransformDeprecatedStartTransform) WithErrorTrace() func(*DataFrameTransformDeprecatedStartTransformRequest) {
 	return func(r *DataFrameTransformDeprecatedStartTransformRequest) {
 		r.ErrorTrace = true
@@ -182,6 +177,7 @@ func (f DataFrameTransformDeprecatedStartTransform) WithErrorTrace() func(*DataF
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f DataFrameTransformDeprecatedStartTransform) WithFilterPath(v ...string) func(*DataFrameTransformDeprecatedStartTransformRequest) {
 	return func(r *DataFrameTransformDeprecatedStartTransformRequest) {
 		r.FilterPath = v
@@ -189,6 +185,7 @@ func (f DataFrameTransformDeprecatedStartTransform) WithFilterPath(v ...string) 
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f DataFrameTransformDeprecatedStartTransform) WithHeader(h map[string]string) func(*DataFrameTransformDeprecatedStartTransformRequest) {
 	return func(r *DataFrameTransformDeprecatedStartTransformRequest) {
 		if r.Header == nil {
@@ -201,6 +198,7 @@ func (f DataFrameTransformDeprecatedStartTransform) WithHeader(h map[string]stri
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f DataFrameTransformDeprecatedStartTransform) WithOpaqueID(s string) func(*DataFrameTransformDeprecatedStartTransformRequest) {
 	return func(r *DataFrameTransformDeprecatedStartTransformRequest) {
 		if r.Header == nil {

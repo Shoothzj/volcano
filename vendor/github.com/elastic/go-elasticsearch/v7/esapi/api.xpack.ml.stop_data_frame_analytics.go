@@ -1,21 +1,8 @@
-// Licensed to Elasticsearch B.V. under one or more contributor
-// license agreements. See the NOTICE file distributed with
-// this work for additional information regarding copyright
-// ownership. Elasticsearch B.V. licenses this file to you under
-// the Apache License, Version 2.0 (the "License"); you may
-// not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// Licensed to Elasticsearch B.V under one or more agreements.
+// Elasticsearch B.V. licenses this file to you under the Apache 2.0 License.
+// See the LICENSE file in the project root for more information.
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing,
-// software distributed under the License is distributed on an
-// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-// KIND, either express or implied.  See the License for the
-// specific language governing permissions and limitations
-// under the License.
-//
-// Code generated from specification version 7.17.7: DO NOT EDIT
+// Code generated from specification version 7.11.0: DO NOT EDIT
 
 package esapi
 
@@ -42,10 +29,14 @@ func newMLStopDataFrameAnalyticsFunc(t Transport) MLStopDataFrameAnalytics {
 
 // MLStopDataFrameAnalytics - Stops one or more data frame analytics jobs.
 //
+// This API is beta.
+//
 // See full documentation at https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-dfanalytics.html.
+//
 type MLStopDataFrameAnalytics func(id string, o ...func(*MLStopDataFrameAnalyticsRequest)) (*Response, error)
 
 // MLStopDataFrameAnalyticsRequest configures the ML Stop Data Frame Analytics API request.
+//
 type MLStopDataFrameAnalyticsRequest struct {
 	ID string
 
@@ -66,6 +57,7 @@ type MLStopDataFrameAnalyticsRequest struct {
 }
 
 // Do executes the request and returns response or error.
+//
 func (r MLStopDataFrameAnalyticsRequest) Do(ctx context.Context, transport Transport) (*Response, error) {
 	var (
 		method string
@@ -130,6 +122,10 @@ func (r MLStopDataFrameAnalyticsRequest) Do(ctx context.Context, transport Trans
 		req.URL.RawQuery = q.Encode()
 	}
 
+	if r.Body != nil {
+		req.Header[headerContentType] = headerContentTypeJSON
+	}
+
 	if len(r.Header) > 0 {
 		if len(req.Header) == 0 {
 			req.Header = r.Header
@@ -140,10 +136,6 @@ func (r MLStopDataFrameAnalyticsRequest) Do(ctx context.Context, transport Trans
 				}
 			}
 		}
-	}
-
-	if r.Body != nil && req.Header.Get(headerContentType) == "" {
-		req.Header[headerContentType] = headerContentTypeJSON
 	}
 
 	if ctx != nil {
@@ -165,6 +157,7 @@ func (r MLStopDataFrameAnalyticsRequest) Do(ctx context.Context, transport Trans
 }
 
 // WithContext sets the request context.
+//
 func (f MLStopDataFrameAnalytics) WithContext(v context.Context) func(*MLStopDataFrameAnalyticsRequest) {
 	return func(r *MLStopDataFrameAnalyticsRequest) {
 		r.ctx = v
@@ -172,6 +165,7 @@ func (f MLStopDataFrameAnalytics) WithContext(v context.Context) func(*MLStopDat
 }
 
 // WithBody - The stop data frame analytics parameters.
+//
 func (f MLStopDataFrameAnalytics) WithBody(v io.Reader) func(*MLStopDataFrameAnalyticsRequest) {
 	return func(r *MLStopDataFrameAnalyticsRequest) {
 		r.Body = v
@@ -179,6 +173,7 @@ func (f MLStopDataFrameAnalytics) WithBody(v io.Reader) func(*MLStopDataFrameAna
 }
 
 // WithAllowNoMatch - whether to ignore if a wildcard expression matches no data frame analytics. (this includes `_all` string or when no data frame analytics have been specified).
+//
 func (f MLStopDataFrameAnalytics) WithAllowNoMatch(v bool) func(*MLStopDataFrameAnalyticsRequest) {
 	return func(r *MLStopDataFrameAnalyticsRequest) {
 		r.AllowNoMatch = &v
@@ -186,6 +181,7 @@ func (f MLStopDataFrameAnalytics) WithAllowNoMatch(v bool) func(*MLStopDataFrame
 }
 
 // WithForce - true if the data frame analytics should be forcefully stopped.
+//
 func (f MLStopDataFrameAnalytics) WithForce(v bool) func(*MLStopDataFrameAnalyticsRequest) {
 	return func(r *MLStopDataFrameAnalyticsRequest) {
 		r.Force = &v
@@ -193,6 +189,7 @@ func (f MLStopDataFrameAnalytics) WithForce(v bool) func(*MLStopDataFrameAnalyti
 }
 
 // WithTimeout - controls the time to wait until the task has stopped. defaults to 20 seconds.
+//
 func (f MLStopDataFrameAnalytics) WithTimeout(v time.Duration) func(*MLStopDataFrameAnalyticsRequest) {
 	return func(r *MLStopDataFrameAnalyticsRequest) {
 		r.Timeout = v
@@ -200,6 +197,7 @@ func (f MLStopDataFrameAnalytics) WithTimeout(v time.Duration) func(*MLStopDataF
 }
 
 // WithPretty makes the response body pretty-printed.
+//
 func (f MLStopDataFrameAnalytics) WithPretty() func(*MLStopDataFrameAnalyticsRequest) {
 	return func(r *MLStopDataFrameAnalyticsRequest) {
 		r.Pretty = true
@@ -207,6 +205,7 @@ func (f MLStopDataFrameAnalytics) WithPretty() func(*MLStopDataFrameAnalyticsReq
 }
 
 // WithHuman makes statistical values human-readable.
+//
 func (f MLStopDataFrameAnalytics) WithHuman() func(*MLStopDataFrameAnalyticsRequest) {
 	return func(r *MLStopDataFrameAnalyticsRequest) {
 		r.Human = true
@@ -214,6 +213,7 @@ func (f MLStopDataFrameAnalytics) WithHuman() func(*MLStopDataFrameAnalyticsRequ
 }
 
 // WithErrorTrace includes the stack trace for errors in the response body.
+//
 func (f MLStopDataFrameAnalytics) WithErrorTrace() func(*MLStopDataFrameAnalyticsRequest) {
 	return func(r *MLStopDataFrameAnalyticsRequest) {
 		r.ErrorTrace = true
@@ -221,6 +221,7 @@ func (f MLStopDataFrameAnalytics) WithErrorTrace() func(*MLStopDataFrameAnalytic
 }
 
 // WithFilterPath filters the properties of the response body.
+//
 func (f MLStopDataFrameAnalytics) WithFilterPath(v ...string) func(*MLStopDataFrameAnalyticsRequest) {
 	return func(r *MLStopDataFrameAnalyticsRequest) {
 		r.FilterPath = v
@@ -228,6 +229,7 @@ func (f MLStopDataFrameAnalytics) WithFilterPath(v ...string) func(*MLStopDataFr
 }
 
 // WithHeader adds the headers to the HTTP request.
+//
 func (f MLStopDataFrameAnalytics) WithHeader(h map[string]string) func(*MLStopDataFrameAnalyticsRequest) {
 	return func(r *MLStopDataFrameAnalyticsRequest) {
 		if r.Header == nil {
@@ -240,6 +242,7 @@ func (f MLStopDataFrameAnalytics) WithHeader(h map[string]string) func(*MLStopDa
 }
 
 // WithOpaqueID adds the X-Opaque-Id header to the HTTP request.
+//
 func (f MLStopDataFrameAnalytics) WithOpaqueID(s string) func(*MLStopDataFrameAnalyticsRequest) {
 	return func(r *MLStopDataFrameAnalyticsRequest) {
 		if r.Header == nil {
