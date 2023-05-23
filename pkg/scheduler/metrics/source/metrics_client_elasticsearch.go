@@ -23,6 +23,8 @@ import (
 	"encoding/json"
 	"github.com/elastic/go-elasticsearch/v7"
 	"net/http"
+	"strings"
+	"time"
 )
 
 const (
@@ -115,7 +117,7 @@ func (e *ElasticsearchMetricsClient) NodeMetricsAvg(ctx context.Context, nodeNam
 	}
 	res, err := e.es.Search(
 		e.es.Search.WithContext(ctx),
-		e.es.Search.WithIndex(e.indexName),
+		e.es.Search.WithIndex(e.GetIndex()),
 		e.es.Search.WithBody(&buf),
 	)
 	if err != nil {
@@ -139,4 +141,18 @@ func (e *ElasticsearchMetricsClient) NodeMetricsAvg(ctx context.Context, nodeNam
 	nodeMetrics.Cpu = r.Aggregations.Cpu.Value * 100
 	nodeMetrics.Memory = r.Aggregations.Mem.Value * 100
 	return nodeMetrics, nil
+}
+
+func (e *ElasticsearchMetricsClient) GetIndex() string {
+	var index string
+	if strings.Contains(e.indexName, "{{DATE}}") {
+		timestamp := time.Now()
+		index = strings.ReplaceAll(e.indexName, "{{DATE}}", timestamp.Format("2006.01.02"))
+	} else if strings.Contains(e.indexName, "{{TIME}}") {
+		timestamp := time.Now()
+		index = strings.ReplaceAll(e.indexName, "{{TIME}}", timestamp.Format("2006.01.02-15"))
+	} else {
+		index = e.indexName
+	}
+	return index
 }
