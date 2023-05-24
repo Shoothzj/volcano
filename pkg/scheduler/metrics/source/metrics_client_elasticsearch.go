@@ -117,7 +117,7 @@ func (e *ElasticsearchMetricsClient) NodeMetricsAvg(ctx context.Context, nodeNam
 	}
 	res, err := e.es.Search(
 		e.es.Search.WithContext(ctx),
-		e.es.Search.WithIndex(e.GetIndex()),
+		e.es.Search.WithIndex(e.GetIndex()...),
 		e.es.Search.WithBody(&buf),
 	)
 	if err != nil {
@@ -143,16 +143,20 @@ func (e *ElasticsearchMetricsClient) NodeMetricsAvg(ctx context.Context, nodeNam
 	return nodeMetrics, nil
 }
 
-func (e *ElasticsearchMetricsClient) GetIndex() string {
-	var index string
+func (e *ElasticsearchMetricsClient) GetIndex() []string {
+	var index []string
 	if strings.Contains(e.indexName, "{{DATE}}") {
+		// Compatible with cross day scenarios
 		timestamp := time.Now()
-		index = strings.ReplaceAll(e.indexName, "{{DATE}}", timestamp.Format("2006.01.02"))
+		index = append(index, strings.ReplaceAll(e.indexName, "{{DATE}}", timestamp.Add(-time.Hour*24).Format("2006.01.02")))
+		index = append(index, strings.ReplaceAll(e.indexName, "{{DATE}}", timestamp.Format("2006.01.02")))
 	} else if strings.Contains(e.indexName, "{{TIME}}") {
+		// Compatible with cross hour scenarios
 		timestamp := time.Now()
-		index = strings.ReplaceAll(e.indexName, "{{TIME}}", timestamp.Format("2006.01.02-15"))
+		index = append(index, strings.ReplaceAll(e.indexName, "{{TIME}}", timestamp.Add(-time.Hour).Format("2006.01.02-15")))
+		index = append(index, strings.ReplaceAll(e.indexName, "{{TIME}}", timestamp.Format("2006.01.02-15")))
 	} else {
-		index = e.indexName
+		index = append(index, e.indexName)
 	}
 	return index
 }
