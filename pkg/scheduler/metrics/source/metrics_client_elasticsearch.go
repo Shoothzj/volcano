@@ -148,7 +148,9 @@ func (e *ElasticsearchMetricsClient) GetIndex() []string {
 	if strings.Contains(e.indexName, "{{DATE}}") {
 		// Compatible with cross day scenarios
 		timestamp := time.Now()
-		index = append(index, strings.ReplaceAll(e.indexName, "{{DATE}}", timestamp.Add(-time.Hour*24).Format("2006.01.02")))
+		if timestamp.Hour() == 0 && timestamp.Minute() < 30 {
+			index = append(index, strings.ReplaceAll(e.indexName, "{{DATE}}", timestamp.Add(-time.Hour*24).Format("2006.01.02")))
+		}
 		index = append(index, strings.ReplaceAll(e.indexName, "{{DATE}}", timestamp.Format("2006.01.02")))
 	} else if strings.Contains(e.indexName, "{{TIME}}") {
 		// Compatible with cross hour scenarios
