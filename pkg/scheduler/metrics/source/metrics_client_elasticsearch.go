@@ -75,8 +75,8 @@ func NewElasticsearchMetricsClient(address string, conf map[string]string) (*Ela
 	return e, nil
 }
 
-func (e *ElasticsearchMetricsClient) NodeMetricsAvg(ctx context.Context, nodeName string, period string) (*NodeMetrics, error) {
-	nodeMetrics := &NodeMetrics{}
+func (e *ElasticsearchMetricsClient) NodeMetricsAvg(ctx context.Context, period string, nodes ...string) (map[string]NodeMetrics, error) {
+	nodeMetrics := make(map[string]NodeMetrics)
 	var buf bytes.Buffer
 	query := map[string]interface{}{
 		"size": 0,
@@ -92,22 +92,29 @@ func (e *ElasticsearchMetricsClient) NodeMetricsAvg(ctx context.Context, nodeNam
 						},
 					},
 					{
-						"term": map[string]interface{}{
-							e.hostnameFieldName: nodeName,
+						"terms": map[string]interface{}{
+							e.hostnameFieldName: nodes,
 						},
 					},
 				},
 			},
 		},
 		"aggs": map[string]interface{}{
-			"cpu": map[string]interface{}{
-				"avg": map[string]interface{}{
-					"field": esCpuUsageField,
+			"node": map[string]interface{}{
+				"terms": map[string]interface{}{
+					"field": e.hostnameFieldName,
 				},
-			},
-			"mem": map[string]interface{}{
-				"avg": map[string]interface{}{
-					"field": esMemUsageField,
+				"aggs": map[string]interface{}{
+					"cpu": map[string]interface{}{
+						"avg": map[string]interface{}{
+							"field": esCpuUsageField,
+						},
+					},
+					"mem": map[string]interface{}{
+						"avg": map[string]interface{}{
+							"field": esMemUsageField,
+						},
+					},
 				},
 			},
 		},
@@ -117,7 +124,7 @@ func (e *ElasticsearchMetricsClient) NodeMetricsAvg(ctx context.Context, nodeNam
 	}
 	res, err := e.es.Search(
 		e.es.Search.WithContext(ctx),
-		e.es.Search.WithIndex(e.GetIndex()),
+		e.es.Search.WithIndex(e.GetIndex()...),
 		e.es.Search.WithBody(&buf),
 	)
 	if err != nil {
@@ -126,33 +133,45 @@ func (e *ElasticsearchMetricsClient) NodeMetricsAvg(ctx context.Context, nodeNam
 	defer res.Body.Close()
 	var r struct {
 		Aggregations struct {
-			Cpu struct {
-				Value float64 `json:"value"`
-			}
-			Mem struct {
-				Value float64 `json:"value"`
+			Node struct {
+				Buckets []struct {
+					Key string `json:"key"`
+					Cpu struct {
+						Value float64 `json:"value"`
+					}
+					Mem struct {
+						Value float64 `json:"value"`
+					}
+				}
 			}
 		} `json:"aggregations"`
 	}
 	if err := json.NewDecoder(res.Body).Decode(&r); err != nil {
 		return nil, err
 	}
-	// The data obtained from Elasticsearch is in decimals and needs to be multiplied by 100.
-	nodeMetrics.Cpu = r.Aggregations.Cpu.Value * 100
-	nodeMetrics.Memory = r.Aggregations.Mem.Value * 100
+
+	for _, node := range r.Aggregations.Node.Buckets {
+		// The data obtained from Elasticsearch is in decimals and needs to be multiplied by 100.
+		nodeMetrics[node.Key] = NodeMetrics{
+			Cpu:    node.Cpu.Value * 100,
+			Memory: node.Mem.Value * 100,
+		}
+	}
 	return nodeMetrics, nil
 }
 
-func (e *ElasticsearchMetricsClient) GetIndex() string {
-	var index string
+func (e *ElasticsearchMetricsClient) GetIndex() []string {
+	var indexs []string
 	if strings.Contains(e.indexName, "{{DATE}}") {
 		timestamp := time.Now()
-		index = strings.ReplaceAll(e.indexName, "{{DATE}}", timestamp.Format("2006.01.02"))
+		indexs = append(indexs, strings.ReplaceAll(e.indexName, "{{DATE}}", timestamp.Format("2006.01.02")))
 	} else if strings.Contains(e.indexName, "{{TIME}}") {
+		// Compatible with cross hour scenarios
 		timestamp := time.Now()
-		index = strings.ReplaceAll(e.indexName, "{{TIME}}", timestamp.Format("2006.01.02-15"))
+		indexs = append(indexs, strings.ReplaceAll(e.indexName, "{{TIME}}", timestamp.Add(-time.Hour).Format("2006.01.02-15")))
+		indexs = append(indexs, strings.ReplaceAll(e.indexName, "{{TIME}}", timestamp.Format("2006.01.02-15")))
 	} else {
-		index = e.indexName
+		indexs = append(indexs, e.indexName)
 	}
-	return index
+	return indexs
 }
