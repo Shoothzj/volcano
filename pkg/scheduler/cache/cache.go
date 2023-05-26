@@ -1273,8 +1273,10 @@ func (sc *SchedulerCache) GetMetricsData() {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*60)
 	defer cancel()
 	nodeUsageMap := make(map[string]*schedulingapi.NodeUsage)
+	nodes := []string{}
 	sc.Mutex.Lock()
 	for k := range sc.Nodes {
+		nodes = append(nodes, k)
 		nodeUsageMap[k] = &schedulingapi.NodeUsage{
 			CPUUsageAvg: make(map[string]float64),
 			MEMUsageAvg: make(map[string]float64),
@@ -1283,18 +1285,19 @@ func (sc *SchedulerCache) GetMetricsData() {
 	sc.Mutex.Unlock()
 
 	supportedPeriods := []string{"5m"}
-	for node := range nodeUsageMap {
-		for _, period := range supportedPeriods {
-			nodeMetrics, err := client.NodeMetricsAvg(ctx, node, period)
-			if err != nil {
-				klog.Errorf("Error getting node metrics: %v\n", err)
-				continue
-			}
-			klog.V(4).Infof("node: %v, CpuUsageAvg: %v, MemUsageAvg: %v, period:%v", node, nodeMetrics.Cpu, nodeMetrics.Memory, period)
-			nodeUsageMap[node].CPUUsageAvg[period] = nodeMetrics.Cpu
-			nodeUsageMap[node].MEMUsageAvg[period] = nodeMetrics.Memory
+	for _, period := range supportedPeriods {
+		nodeMetrics, err := client.NodeMetricsAvg(ctx, period, nodes...)
+		if err != nil {
+			klog.Errorf("Error getting node metrics: %v\n", err)
+			continue
+		}
+		for node := range nodeUsageMap {
+			klog.V(4).Infof("node: %v, CpuUsageAvg: %v, MemUsageAvg: %v, period:%v", node, nodeMetrics[node].Cpu, nodeMetrics[node].Memory, period)
+			nodeUsageMap[node].CPUUsageAvg[period] = nodeMetrics[node].Cpu
+			nodeUsageMap[node].MEMUsageAvg[period] = nodeMetrics[node].Memory
 		}
 	}
+
 	sc.setMetricsData(nodeUsageMap)
 }
 

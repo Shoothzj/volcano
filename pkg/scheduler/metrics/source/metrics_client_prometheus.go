@@ -46,7 +46,7 @@ func NewPrometheusMetricsClient(address string, conf map[string]string) (*Promet
 	return &PrometheusMetricsClient{address: address, conf: conf}, nil
 }
 
-func (p *PrometheusMetricsClient) NodeMetricsAvg(ctx context.Context, nodeName string, period string) (*NodeMetrics, error) {
+func (p *PrometheusMetricsClient) NodeMetricsAvg(ctx context.Context, period string, nodes ...string) (map[string]NodeMetrics, error) {
 	klog.V(4).Infof("Get node metrics from Prometheus: %s", p.address)
 	var client api.Client
 	var err error
@@ -64,37 +64,41 @@ func (p *PrometheusMetricsClient) NodeMetricsAvg(ctx context.Context, nodeName s
 		return nil, err
 	}
 	v1api := prometheusv1.NewAPI(client)
-	nodeMetrics := &NodeMetrics{}
-	for _, metric := range []string{promCpuUsageAvg, promMemUsageAvg} {
-		queryStr := fmt.Sprintf("%s_%s{instance=\"%s\"}", metric, period, nodeName)
-		klog.V(4).Infof("Query prometheus by %s", queryStr)
-		res, warnings, err := v1api.Query(ctx, queryStr, time.Now())
-		if err != nil {
-			klog.Errorf("Error querying Prometheus: %v", err)
+	nodeMetrics := make(map[string]NodeMetrics)
+	for _, nodeName := range nodes {
+		var nms NodeMetrics
+		for _, metric := range []string{promCpuUsageAvg, promMemUsageAvg} {
+			queryStr := fmt.Sprintf("%s_%s{instance=\"%s\"}", metric, period, nodeName)
+			klog.V(4).Infof("Query prometheus by %s", queryStr)
+			res, warnings, err := v1api.Query(ctx, queryStr, time.Now())
+			if err != nil {
+				klog.Errorf("Error querying Prometheus: %v", err)
+			}
+			if len(warnings) > 0 {
+				klog.V(3).Infof("Warning querying Prometheus: %v", warnings)
+			}
+			if res == nil || res.String() == "" {
+				klog.Warningf("Warning querying Prometheus: no data found for %s", queryStr)
+				continue
+			}
+			// plugin.usage only need type pmodel.ValVector in Prometheus.rulues
+			if res.Type() != pmodel.ValVector {
+				continue
+			}
+			// only method res.String() can get data, dataType []pmodel.ValVector, eg: "{k1:v1, ...} => #[value] @#[timespace]\n {k2:v2, ...} => ..."
+			firstRowValVector := strings.Split(res.String(), "\n")[0]
+			rowValues := strings.Split(strings.TrimSpace(firstRowValVector), "=>")
+			value := strings.Split(strings.TrimSpace(rowValues[1]), " ")
+			switch metric {
+			case promCpuUsageAvg:
+				cpuUsage, _ := strconv.ParseFloat(value[0], 64)
+				nms.Cpu = cpuUsage
+			case promMemUsageAvg:
+				memUsage, _ := strconv.ParseFloat(value[0], 64)
+				nms.Memory = memUsage
+			}
 		}
-		if len(warnings) > 0 {
-			klog.V(3).Infof("Warning querying Prometheus: %v", warnings)
-		}
-		if res == nil || res.String() == "" {
-			klog.Warningf("Warning querying Prometheus: no data found for %s", queryStr)
-			continue
-		}
-		// plugin.usage only need type pmodel.ValVector in Prometheus.rulues
-		if res.Type() != pmodel.ValVector {
-			continue
-		}
-		// only method res.String() can get data, dataType []pmodel.ValVector, eg: "{k1:v1, ...} => #[value] @#[timespace]\n {k2:v2, ...} => ..."
-		firstRowValVector := strings.Split(res.String(), "\n")[0]
-		rowValues := strings.Split(strings.TrimSpace(firstRowValVector), "=>")
-		value := strings.Split(strings.TrimSpace(rowValues[1]), " ")
-		switch metric {
-		case promCpuUsageAvg:
-			cpuUsage, _ := strconv.ParseFloat(value[0], 64)
-			nodeMetrics.Cpu = cpuUsage
-		case promMemUsageAvg:
-			memUsage, _ := strconv.ParseFloat(value[0], 64)
-			nodeMetrics.Memory = memUsage
-		}
+		nodeMetrics[nodeName] = nms
 	}
 	return nodeMetrics, nil
 }

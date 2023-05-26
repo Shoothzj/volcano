@@ -27,7 +27,7 @@ type NodeMetrics struct {
 }
 
 type MetricsClient interface {
-	NodeMetricsAvg(ctx context.Context, nodeName string, period string) (*NodeMetrics, error)
+	NodeMetricsAvg(ctx context.Context, period string, nodes ...string) (map[string]NodeMetrics, error)
 }
 
 func NewMetricsClient(metricsConf map[string]string) (MetricsClient, error) {
