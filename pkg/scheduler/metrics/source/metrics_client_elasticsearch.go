@@ -39,6 +39,7 @@ const (
 type ElasticsearchMetricsClient struct {
 	address           string
 	indexName         string
+	query             string
 	es                *elasticsearch.Client
 	hostnameFieldName string
 }
@@ -57,6 +58,7 @@ func NewElasticsearchMetricsClient(address string, conf map[string]string) (*Ela
 	} else {
 		e.hostnameFieldName = hostNameFieldName
 	}
+	e.query = conf["elasticsearch.query"]
 	var err error
 	insecureSkipVerify := conf["tls.insecureSkipVerify"] == "true"
 	e.es, err = elasticsearch.NewClient(elasticsearch.Config{
@@ -97,6 +99,13 @@ func (e *ElasticsearchMetricsClient) NodeMetricsAvg(ctx context.Context, nodeNam
 						},
 					},
 				},
+				"filter": []map[string]interface{}{
+					{
+						"query_string": map[string]interface{}{
+							"query": e.query,
+						},
+					},
+				},
 			},
 		},
 		"aggs": map[string]interface{}{
@@ -117,7 +126,7 @@ func (e *ElasticsearchMetricsClient) NodeMetricsAvg(ctx context.Context, nodeNam
 	}
 	res, err := e.es.Search(
 		e.es.Search.WithContext(ctx),
-		e.es.Search.WithIndex(e.GetIndex()),
+		e.es.Search.WithIndex(e.GetIndex()...),
 		e.es.Search.WithBody(&buf),
 	)
 	if err != nil {
@@ -143,16 +152,17 @@ func (e *ElasticsearchMetricsClient) NodeMetricsAvg(ctx context.Context, nodeNam
 	return nodeMetrics, nil
 }
 
-func (e *ElasticsearchMetricsClient) GetIndex() string {
-	var index string
+func (e *ElasticsearchMetricsClient) GetIndex() []string {
+	var index []string
 	if strings.Contains(e.indexName, "{{DATE}}") {
 		timestamp := time.Now()
-		index = strings.ReplaceAll(e.indexName, "{{DATE}}", timestamp.Format("2006.01.02"))
+		index = append(index, strings.ReplaceAll(e.indexName, "{{DATE}}", timestamp.Format("2006.01.02")))
 	} else if strings.Contains(e.indexName, "{{TIME}}") {
 		timestamp := time.Now()
-		index = strings.ReplaceAll(e.indexName, "{{TIME}}", timestamp.Format("2006.01.02-15"))
+		index = append(index, strings.ReplaceAll(e.indexName, "{{TIME}}", timestamp.Add(-time.Hour).Format("2006.01.02-15")))
+		index = append(index, strings.ReplaceAll(e.indexName, "{{TIME}}", timestamp.Format("2006.01.02-15")))
 	} else {
-		index = e.indexName
+		index = append(index, e.indexName)
 	}
 	return index
 }
